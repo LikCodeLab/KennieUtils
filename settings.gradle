@@ -4,16 +4,17 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
-        jcenter() // Warning: this repository is going to shut down soon
+//        jcenter() // Warning: this repository is going to shut down soon
     }
 }
-rootProject.name = "KennieLibTemplate"
+rootProject.name = "KennieUtils"
 
 //************************演示项目 目录************************
 include ':app_example'
-
+include ':library_utils'
 //************************公共库 目录************************
-include ':library'
+
+include ':library_res'
 
 
 
