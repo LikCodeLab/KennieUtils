@@ -6,6 +6,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 
+import androidx.annotation.NonNull;
+
 import com.kennie.library.utils.KennieUtilsInit;
 
 import java.io.File;
@@ -20,6 +22,20 @@ import java.io.File;
  */
 public class AppUtils {
 
+    /**
+     * getAppName                        : 获取 App 名称
+     * getAppPackage                     : 获取 App 包名
+     * getAppVersionName                 : 获取 App 版本号
+     * getAppVersionCode                 : 获取 App 版本Code
+     * getAppIcon                        : 获取 App 图标
+     * getAppInstallSourcePath           : 获取 App 安装原始路径
+     * getAppSourceFile                  : 获取 App 原始安装文件(APK)
+     */
+
+    private AppUtils() {
+        throw new UnsupportedOperationException("u can't instantiate me...");
+    }
+
 
     /**
      * 获取APP名称
@@ -27,7 +43,7 @@ public class AppUtils {
      * @return APP名称
      */
     public static String getAppName() {
-        return getAppName(KennieUtilsInit.getsApp());
+        return getAppName(KennieUtilsInit.getApp());
     }
 
     /**
@@ -59,6 +75,68 @@ public class AppUtils {
         return appName;
     }
 
+    /**
+     * 获取APP包名
+     *
+     * @return the application's package name
+     */
+    public static String getAppPackage() {
+        return KennieUtilsInit.getApp().getPackageName();
+    }
+
+    /**
+     * 获取APP版本号
+     *
+     * @return APP版本号
+     */
+    public static String getAppVersionName() {
+        return getAppVersionName(KennieUtilsInit.getApp(), KennieUtilsInit.getApp().getPackageName());
+    }
+
+    /**
+     * 获取APP版本号
+     *
+     * @param context     上下文
+     * @param packageName 包名
+     * @return APP版本号
+     */
+    private static String getAppVersionName(Context context, String packageName) {
+        try {
+            PackageManager packageManager = context.getPackageManager();
+            PackageInfo packageInfo = packageManager.getPackageInfo(packageName, 0);
+            return packageInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * 获取APP版本Code
+     *
+     * @return APP版本Code
+     */
+    public static int getAppVersionCode() {
+        return getAppVersionCode(KennieUtilsInit.getApp(), KennieUtilsInit.getApp().getPackageName());
+    }
+
+    /**
+     * 获取APP版本Code
+     *
+     * @param context     上下文
+     * @param packageName 包名
+     * @return APP版本Code
+     */
+    private static int getAppVersionCode(Context context, String packageName) {
+        try {
+            PackageManager packageManager = context.getPackageManager();
+            PackageInfo packageInfo = packageManager.getPackageInfo(packageName, 0);
+            return packageInfo.versionCode;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 
     /**
      * 获取APP图标
@@ -66,9 +144,8 @@ public class AppUtils {
      * @return APP图标
      */
     public static Drawable getAppIcon() {
-        return getAppIcon(KennieUtilsInit.getsApp());
+        return getAppIcon(KennieUtilsInit.getApp());
     }
-
 
     /**
      * 获取APP图标
@@ -85,7 +162,7 @@ public class AppUtils {
      *
      * @param context     上下文
      * @param packageName 包名
-     * @return
+     * @return APP图标
      */
     private static Drawable getAppIcon(Context context, String packageName) {
         PackageManager pm = context.getPackageManager();
@@ -99,14 +176,13 @@ public class AppUtils {
         return appIcon;
     }
 
-
     /**
      * APP安装原始路径
      *
      * @return APP路径
      */
     public static String getAppInstallSourcePath() {
-        return getAppInstallSourcePath(KennieUtilsInit.getsApp());
+        return getAppInstallSourcePath(KennieUtilsInit.getApp());
     }
 
     /**
@@ -137,14 +213,13 @@ public class AppUtils {
         return sourceDir;
     }
 
-
     /**
      * APP原始安装文件(APK)
      *
      * @return 文件.apk
      */
     public static File getAppSourceFile() {
-        return getAppSourceFile(KennieUtilsInit.getsApp());
+        return getAppSourceFile(KennieUtilsInit.getApp());
     }
 
     /**
@@ -173,58 +248,4 @@ public class AppUtils {
     }
 
 
-    /**
-     * 获取APP版本名
-     *
-     * @return APP版本名
-     */
-    public static String getAppVersionName() {
-        return getAppVersionName(KennieUtilsInit.getsApp(), KennieUtilsInit.getsApp().getPackageName());
-    }
-
-    /**
-     * 获取APP版本名
-     *
-     * @param context     上下文
-     * @param packageName 包名
-     * @return APP版本名
-     */
-    private static String getAppVersionName(Context context, String packageName) {
-        try {
-            PackageManager packageManager = context.getPackageManager();
-            PackageInfo packageInfo = packageManager.getPackageInfo(packageName, 0);
-            return packageInfo.versionName;
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    /**
-     * 获取APP版本号
-     *
-     * @return APP版本号
-     */
-    public static int getAppVersionCode() {
-        return getAppVersionCode(KennieUtilsInit.getsApp(), KennieUtilsInit.getsApp().getPackageName());
-    }
-
-
-    /**
-     * 获取APP版本号
-     *
-     * @param context     上下文
-     * @param packageName 包名
-     * @return APP版本号
-     */
-    private static int getAppVersionCode(Context context, String packageName) {
-        try {
-            PackageManager packageManager = context.getPackageManager();
-            PackageInfo packageInfo = packageManager.getPackageInfo(packageName, 0);
-            return packageInfo.versionCode;
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-            return 0;
-        }
-    }
 }

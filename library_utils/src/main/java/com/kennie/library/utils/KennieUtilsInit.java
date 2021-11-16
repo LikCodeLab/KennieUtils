@@ -42,7 +42,7 @@ public final class KennieUtilsInit {
     }
 
 
-    public static Application getsApp() {
+    public static Application getApp() {
         if (sApp != null) return sApp;
         throw new NullPointerException("should be initialized KennieUtilsInit in application.");
     }

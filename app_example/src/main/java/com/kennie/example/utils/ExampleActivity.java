@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.kennie.library.utils.core.AppPathUtils;
 import com.kennie.library.utils.core.AppUtils;
 import com.kennie.library.utils.core.DateUtils;
+import com.kennie.library.utils.core.RomUtils;
 
 import java.util.Date;
 
@@ -31,6 +33,19 @@ public class ExampleActivity extends AppCompatActivity {
         Log.i(TAG, "当前格式化时间：" + DateUtils.formatDate(System.currentTimeMillis(), "HH:mm:ss"));
         Log.i(TAG, "当前格式化时间：" + DateUtils.formatDate(new Date(), "yyyyMMdd"));
 
+        Log.i(TAG, "ROM：" + RomUtils.isXiaomi());
+
+
+        Log.i(TAG, "获取APP应用数据路径：" + AppPathUtils.getAppDataPath());
+        Log.i(TAG, "获取APP应用缓存路径：" + AppPathUtils.getAppCachePath());
+        Log.i(TAG, "获取APP应用数据库路径：" + AppPathUtils.getAppDbPath());
+        Log.i(TAG, "获取APP应用数据库路径：" + AppPathUtils.getAppDbPath("databaseName"));
+        Log.i(TAG, "获取APP应用文件路径：" + AppPathUtils.getAppFilesPath());
+        Log.i(TAG, "获取APP应用SP路径：" + AppPathUtils.getAppSpPath());
+
+        Log.i(TAG, "获取APP：" + AppPathUtils.getExternalStoragePath());
+        Log.i(TAG, "获取APP：" + AppPathUtils.getAppExternalDataPath());
+        Log.i(TAG, "获取APP：" + AppPathUtils.getAppExternalOBBPath());
 
     }
 }
