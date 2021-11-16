@@ -1,4 +1,4 @@
-package com.kennie.library;
+package com.kennie.library.utils;
 
 import android.annotation.SuppressLint;
 import android.app.Application;

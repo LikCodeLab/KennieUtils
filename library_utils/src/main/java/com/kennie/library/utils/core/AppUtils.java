@@ -1,4 +1,4 @@
-package com.kennie.library.utils;
+package com.kennie.library.utils.core;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -6,7 +6,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 
-import com.kennie.library.KennieUtilsInit;
+import com.kennie.library.utils.KennieUtilsInit;
 
 import java.io.File;
 

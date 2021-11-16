@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.kennie.library.utils.AppUtils;
-import com.kennie.library.utils.DateUtils;
+import com.kennie.library.utils.core.AppUtils;
+import com.kennie.library.utils.core.DateUtils;
 
 import java.util.Date;
 

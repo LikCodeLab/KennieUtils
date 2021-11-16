@@ -1,4 +1,4 @@
-package com.kennie.library.utils;
+package com.kennie.library.utils.core;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

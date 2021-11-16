@@ -1,4 +1,4 @@
-package com.kennie.library.helper;
+package com.kennie.library.utils.temp.helper;
 
 import android.os.Handler;
 import android.os.Looper;
@@ -6,9 +6,9 @@ import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 
-import com.kennie.library.utils.FileUtils;
-import com.kennie.library.utils.IOUtils;
-import com.kennie.library.utils.StringUtils;
+import com.kennie.library.utils.temp.FileUtils;
+import com.kennie.library.utils.temp.IOUtils;
+import com.kennie.library.utils.temp.StringUtils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
