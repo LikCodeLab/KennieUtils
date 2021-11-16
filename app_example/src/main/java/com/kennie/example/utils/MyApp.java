@@ -1,4 +1,4 @@
-package com.kennie.library.example;
+package com.kennie.example.utils;
 
 import android.app.Application;
 
