@@ -8,6 +8,7 @@ import android.util.Log;
 import com.kennie.library.utils.core.AppPathUtils;
 import com.kennie.library.utils.core.AppUtils;
 import com.kennie.library.utils.core.DateUtils;
+import com.kennie.library.utils.core.PhoneUtils;
 import com.kennie.library.utils.core.RomUtils;
 
 import java.util.Date;
@@ -46,6 +47,10 @@ public class ExampleActivity extends AppCompatActivity {
         Log.i(TAG, "获取APP：" + AppPathUtils.getExternalStoragePath());
         Log.i(TAG, "获取APP：" + AppPathUtils.getAppExternalDataPath());
         Log.i(TAG, "获取APP：" + AppPathUtils.getAppExternalOBBPath());
+
+        Log.i(TAG, "获取APP：" + PhoneUtils.isPhone());
+        Log.i(TAG, "获取APP：" + PhoneUtils.getDeviceId());
+        Log.i(TAG, "获取APP：" + PhoneUtils.getSerial());
 
     }
 }
