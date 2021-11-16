@@ -2,7 +2,7 @@ package com.kennie.library.example;
 
 import android.app.Application;
 
-import com.kennie.library.KennieInitUtil;
+import com.kennie.library.KennieUtilsInit;
 
 /**
  * @项目名 KennieUtils
@@ -17,6 +17,6 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        KennieInitUtil.instance().create(this); // 初始化工具
+        KennieUtilsInit.init(this);
     }
 }

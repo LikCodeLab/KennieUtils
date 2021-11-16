@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
+import com.kennie.library.KennieUtilsInit;
+
 /**
  * @项目名 KennieUtils
  * @类名称 AppUtils
@@ -15,12 +17,12 @@ import android.content.pm.PackageManager;
 public class AppUtils {
 
     /**
-     * 获取版本名
+     * 获取APP版本名
      */
-    public static String getVersionName(Context ctx) {
+    public static String getAppVersionName() {
         try {
-            PackageManager packageManager = ctx.getPackageManager();
-            PackageInfo packageInfo = packageManager.getPackageInfo(ctx.getPackageName(), 0);
+            PackageManager packageManager = KennieUtilsInit.getsApp().getPackageManager();
+            PackageInfo packageInfo = packageManager.getPackageInfo(KennieUtilsInit.getsApp().getPackageName(), 0);
             return packageInfo.versionName;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
@@ -29,12 +31,12 @@ public class AppUtils {
     }
 
     /**
-     * 获取版本号
+     * 获取APP版本号
      */
-    public static int getVersionCode(Context ctx) {
+    public static int getAppVersionCode() {
         try {
-            PackageManager packageManager = ctx.getPackageManager();
-            PackageInfo packageInfo = packageManager.getPackageInfo(ctx.getPackageName(), 0);
+            PackageManager packageManager = KennieUtilsInit.getsApp().getPackageManager();
+            PackageInfo packageInfo = packageManager.getPackageInfo(KennieUtilsInit.getsApp().getPackageName(), 0);
             return packageInfo.versionCode;
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
