@@ -10,7 +10,7 @@ import android.text.TextUtils;
 
 import androidx.annotation.RequiresPermission;
 
-import com.kennie.library.utils.KennieUtilsInit;
+import com.kennie.library.utils.KennieUtilsApp;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -240,6 +240,6 @@ public class PhoneUtils {
     }
 
     private static TelephonyManager getTelephonyManager() {
-        return (TelephonyManager) KennieUtilsInit.getApp().getSystemService(Context.TELEPHONY_SERVICE);
+        return (TelephonyManager) KennieUtilsApp.getApp().getSystemService(Context.TELEPHONY_SERVICE);
     }
 }

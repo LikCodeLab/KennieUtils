@@ -3,7 +3,7 @@ package com.kennie.library.utils.core;
 import android.os.Build;
 import android.os.Environment;
 
-import com.kennie.library.utils.KennieUtilsInit;
+import com.kennie.library.utils.KennieUtilsApp;
 
 import java.io.File;
 
@@ -54,9 +54,9 @@ public class AppPathUtils {
      */
     public static String getAppDataPath() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-            return KennieUtilsInit.getApp().getApplicationInfo().dataDir;
+            return KennieUtilsApp.getApp().getApplicationInfo().dataDir;
         }
-        return KennieUtilsInit.getApp().getDataDir().getAbsolutePath();
+        return KennieUtilsApp.getApp().getDataDir().getAbsolutePath();
     }
 
     /**
@@ -65,7 +65,7 @@ public class AppPathUtils {
      * @return 路径 /data/user/0/package/cache
      */
     public static String getAppCachePath() {
-        return KennieUtilsInit.getApp().getCacheDir().getAbsolutePath();
+        return KennieUtilsApp.getApp().getCacheDir().getAbsolutePath();
     }
 
     /**
@@ -74,7 +74,7 @@ public class AppPathUtils {
      * @return 路径 /data/user/0/package/databases
      */
     public static String getAppDbPath() {
-        return KennieUtilsInit.getApp().getApplicationInfo().dataDir + "/databases";
+        return KennieUtilsApp.getApp().getApplicationInfo().dataDir + "/databases";
     }
 
     /**
@@ -83,7 +83,7 @@ public class AppPathUtils {
      * @return 路径 /data/user/0/package/databases/name
      */
     public static String getAppDbPath(String databaseName) {
-        return KennieUtilsInit.getApp().getDatabasePath(databaseName).getAbsolutePath();
+        return KennieUtilsApp.getApp().getDatabasePath(databaseName).getAbsolutePath();
     }
 
     /**
@@ -92,7 +92,7 @@ public class AppPathUtils {
      * @return 路径 /data/user/0/package/files
      */
     public static String getAppFilesPath() {
-        return KennieUtilsInit.getApp().getFilesDir().getAbsolutePath();
+        return KennieUtilsApp.getApp().getFilesDir().getAbsolutePath();
     }
 
     /**
@@ -101,7 +101,7 @@ public class AppPathUtils {
      * @return 路径 /data/user/0/package/shared_prefs
      */
     public static String getAppSpPath() {
-        return KennieUtilsInit.getApp().getApplicationInfo().dataDir + "/shared_prefs";
+        return KennieUtilsApp.getApp().getApplicationInfo().dataDir + "/shared_prefs";
     }
 
     /**
@@ -155,7 +155,7 @@ public class AppPathUtils {
      * @return 路径 /storage/emulated/0/Android/data/package
      */
     public static String getAppExternalDataPath() {
-        File externalCacheDir = KennieUtilsInit.getApp().getExternalCacheDir();
+        File externalCacheDir = KennieUtilsApp.getApp().getExternalCacheDir();
         if (externalCacheDir == null) return "";
         return externalCacheDir.getParentFile().getAbsolutePath();
     }
@@ -166,7 +166,7 @@ public class AppPathUtils {
      * @return 路径 /storage/emulated/0/Android/data/package/cache
      */
     public static String getAppExternalCachePath() {
-        return KennieUtilsInit.getApp().getExternalCacheDir().getAbsolutePath();
+        return KennieUtilsApp.getApp().getExternalCacheDir().getAbsolutePath();
     }
 
     /**
@@ -175,7 +175,7 @@ public class AppPathUtils {
      * @return 路径 /storage/emulated/0/Android/data/package/files
      */
     public static String getAppExternalFilesPath() {
-        return KennieUtilsInit.getApp().getExternalFilesDir(null).getAbsolutePath();
+        return KennieUtilsApp.getApp().getExternalFilesDir(null).getAbsolutePath();
     }
 
     /**
@@ -184,7 +184,7 @@ public class AppPathUtils {
      * @return 路径 /storage/emulated/0/Android/data/package/files/Pictures
      */
     public static String getAppExternalPicturesPath() {
-        return KennieUtilsInit.getApp().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath();
+        return KennieUtilsApp.getApp().getExternalFilesDir(Environment.DIRECTORY_PICTURES).getAbsolutePath();
     }
 
     /**
@@ -193,7 +193,7 @@ public class AppPathUtils {
      * @return 路径 /storage/emulated/0/Android/data/package/files/DCIM
      */
     public static String getAppExternalDCIMPath() {
-        return KennieUtilsInit.getApp().getExternalFilesDir(Environment.DIRECTORY_DCIM).getAbsolutePath();
+        return KennieUtilsApp.getApp().getExternalFilesDir(Environment.DIRECTORY_DCIM).getAbsolutePath();
     }
 
     /**
@@ -202,7 +202,7 @@ public class AppPathUtils {
      * @return 路径 /storage/emulated/0/Android/data/package/files/Download
      */
     public static String getAppExternalDownloadPath() {
-        return KennieUtilsInit.getApp().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
+        return KennieUtilsApp.getApp().getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).getAbsolutePath();
     }
 
     /**
@@ -211,7 +211,7 @@ public class AppPathUtils {
      * @return 路径 /storage/emulated/0/Android/data/package/files/Documents
      */
     public static String getAppExternalDocumentsPath() {
-        return KennieUtilsInit.getApp().getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS).getAbsolutePath();
+        return KennieUtilsApp.getApp().getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS).getAbsolutePath();
     }
 
     /**
@@ -220,7 +220,7 @@ public class AppPathUtils {
      * @return 路径 /storage/emulated/0/Android/obb/package
      */
     public static String getAppExternalOBBPath() {
-        return KennieUtilsInit.getApp().getObbDir().getAbsolutePath();
+        return KennieUtilsApp.getApp().getObbDir().getAbsolutePath();
     }
 
 }

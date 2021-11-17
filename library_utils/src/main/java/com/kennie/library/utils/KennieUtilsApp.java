@@ -13,15 +13,15 @@ import android.util.Log;
  * @修改人
  * @创建时间 2021/11/5 21:37
  */
-public final class KennieUtilsInit {
+public final class KennieUtilsApp {
 
-    private static final String TAG = KennieUtilsInit.class.getSimpleName();
+    private static final String TAG = KennieUtilsApp.class.getSimpleName();
 
     //全局上下文
     @SuppressLint("StaticFieldLeak")
     private static Application sApp;
 
-    private KennieUtilsInit() {
+    private KennieUtilsApp() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
@@ -53,7 +53,7 @@ public final class KennieUtilsInit {
      *
      * @return ApplicationContext
      */
-    public static Context getContext() {
+    public static Context getAppContext() {
         if (sApp != null) {
             return sApp.getApplicationContext();
         }

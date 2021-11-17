@@ -6,9 +6,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 
-import androidx.annotation.NonNull;
-
-import com.kennie.library.utils.KennieUtilsInit;
+import com.kennie.library.utils.KennieUtilsApp;
 
 import java.io.File;
 
@@ -43,7 +41,7 @@ public class AppUtils {
      * @return APP名称
      */
     public static String getAppName() {
-        return getAppName(KennieUtilsInit.getApp());
+        return getAppName(KennieUtilsApp.getApp());
     }
 
     /**
@@ -81,7 +79,7 @@ public class AppUtils {
      * @return the application's package name
      */
     public static String getAppPackage() {
-        return KennieUtilsInit.getApp().getPackageName();
+        return KennieUtilsApp.getApp().getPackageName();
     }
 
     /**
@@ -90,7 +88,7 @@ public class AppUtils {
      * @return APP版本号
      */
     public static String getAppVersionName() {
-        return getAppVersionName(KennieUtilsInit.getApp(), KennieUtilsInit.getApp().getPackageName());
+        return getAppVersionName(KennieUtilsApp.getApp(), KennieUtilsApp.getApp().getPackageName());
     }
 
     /**
@@ -117,7 +115,7 @@ public class AppUtils {
      * @return APP版本Code
      */
     public static int getAppVersionCode() {
-        return getAppVersionCode(KennieUtilsInit.getApp(), KennieUtilsInit.getApp().getPackageName());
+        return getAppVersionCode(KennieUtilsApp.getApp(), KennieUtilsApp.getApp().getPackageName());
     }
 
     /**
@@ -144,7 +142,7 @@ public class AppUtils {
      * @return APP图标
      */
     public static Drawable getAppIcon() {
-        return getAppIcon(KennieUtilsInit.getApp());
+        return getAppIcon(KennieUtilsApp.getApp());
     }
 
     /**
@@ -182,7 +180,7 @@ public class AppUtils {
      * @return APP路径
      */
     public static String getAppInstallSourcePath() {
-        return getAppInstallSourcePath(KennieUtilsInit.getApp());
+        return getAppInstallSourcePath(KennieUtilsApp.getApp());
     }
 
     /**
@@ -219,7 +217,7 @@ public class AppUtils {
      * @return 文件.apk
      */
     public static File getAppSourceFile() {
-        return getAppSourceFile(KennieUtilsInit.getApp());
+        return getAppSourceFile(KennieUtilsApp.getApp());
     }
 
     /**
