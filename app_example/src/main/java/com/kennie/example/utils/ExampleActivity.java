@@ -26,6 +26,9 @@ public class ExampleActivity extends AppCompatActivity {
         Log.i(TAG, "APP安装路径：" + AppUtils.getAppInstallSourcePath());
         Log.i(TAG, "APP安装文件：" + AppUtils.getAppSourceFile().getName());
 
+        Log.i(TAG, "APP安装文件：" + AppUtils.isAppInstalled("com.jskjjx.cloudmeeting"));
+
+
         Log.i(TAG, "当前日期与时间：" + DateUtils.getDateTime());
         Log.i(TAG, "当前日期：" + DateUtils.getDate());
         Log.i(TAG, "当前时间：" + DateUtils.getTime());
@@ -49,8 +52,7 @@ public class ExampleActivity extends AppCompatActivity {
         Log.i(TAG, "获取APP：" + AppPathUtils.getAppExternalOBBPath());
 
         Log.i(TAG, "获取APP：" + PhoneUtils.isPhone());
-        Log.i(TAG, "获取APP：" + PhoneUtils.getDeviceId());
-        Log.i(TAG, "获取APP：" + PhoneUtils.getSerial());
+
 
     }
 }

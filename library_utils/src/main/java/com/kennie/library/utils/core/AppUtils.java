@@ -5,10 +5,12 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 
 import com.kennie.library.utils.KennieUtilsApp;
 
 import java.io.File;
+import java.util.List;
 
 /**
  * @项目名 KennieUtils
@@ -28,6 +30,7 @@ public class AppUtils {
      * getAppIcon                        : 获取 App 图标
      * getAppInstallSourcePath           : 获取 App 安装原始路径
      * getAppSourceFile                  : 获取 App 原始安装文件(APK)
+     * isAppInstalled                    : APP是否安装
      */
 
     private AppUtils() {
@@ -246,4 +249,26 @@ public class AppUtils {
     }
 
 
+    /**
+     * APP是否安装
+     *
+     * @param packageName 包名
+     * @return true 已安装 false 未安装
+     */
+    public static boolean isAppInstalled(String packageName) {
+        boolean installed = false;
+        if (TextUtils.isEmpty(packageName)) {
+            return false;
+        }
+        List<ApplicationInfo> installedApplications = KennieUtilsApp.getApp().getPackageManager().getInstalledApplications(0);
+        for (ApplicationInfo in : installedApplications) {
+            if (packageName.equals(in.packageName)) {
+                installed = true;
+                break;
+            } else {
+                installed = false;
+            }
+        }
+        return installed;
+    }
 }
