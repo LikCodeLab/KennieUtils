@@ -9,16 +9,16 @@ import java.util.Set;
 
 /**
  * @项目名 KennieUtils
- * @类名称 SPUtils
+ * @类名称 SPUtil
  * @类描述 配置存储相关工具类
  * @创建人 Kennie
  * @修改人
  * @创建时间 2021/11/18 0:54
  */
-public class SPUtils {
+public class SPUtil {
 
     /**
-     * > - **配置存储相关→[SPUtils.java][SPUtils]**
+     * > - **配置存储相关→[SPUtil.java][SPUtil]**
      * ```
      * init         : 初始化，设置存储文件名
      * contains     : 判断键值是否存在

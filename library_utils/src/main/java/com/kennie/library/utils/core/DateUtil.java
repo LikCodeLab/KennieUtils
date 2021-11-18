@@ -8,13 +8,13 @@ import java.util.Locale;
 
 /**
  * @项目名 KennieUtils
- * @类名称 DateUtils
+ * @类名称 DateUtil
  * @类描述 日期 处理类
  * @创建人 Administrator
  * @修改人
  * @创建时间 2021/11/5 20:41
  */
-public class DateUtils {
+public class DateUtil {
 
     private static final SimpleDateFormat DATE_FORMAT_DATETIME = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
     private static final SimpleDateFormat DATE_FORMAT_DATE = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);

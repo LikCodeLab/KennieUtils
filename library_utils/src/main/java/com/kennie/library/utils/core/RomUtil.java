@@ -22,13 +22,13 @@ import java.util.Properties;
 
 /**
  * @项目名 KennieUtils
- * @类名称 RomUtils
+ * @类名称 RomUtil
  * @类描述 Rom处理工具
  * @创建人 Administrator
  * @修改人
  * @创建时间 2021/11/5 20:31
  */
-public class RomUtils {
+public class RomUtil {
 
     private static final String[] ROM_HUAWEI = {"huawei"};
     private static final String[] ROM_VIVO = {"vivo"};

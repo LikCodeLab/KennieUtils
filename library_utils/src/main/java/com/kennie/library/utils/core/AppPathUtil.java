@@ -1,5 +1,6 @@
 package com.kennie.library.utils.core;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Environment;
 
@@ -9,13 +10,13 @@ import java.io.File;
 
 /**
  * @项目名 KennieUtils
- * @类名称 AppPathUtils
+ * @类名称 AppPathUtil
  * @类描述 App路径处理类
  * @创建人 Administrator
  * @修改人
  * @创建时间 2021/11/16 23:09
  */
-public class AppPathUtils {
+public class AppPathUtil {
 
     /**
      * getAppDataPath                : 获取APP应用数据路径
@@ -221,6 +222,97 @@ public class AppPathUtils {
      */
     public static String getAppExternalOBBPath() {
         return KennieUtilsApp.getApp().getObbDir().getAbsolutePath();
+    }
+
+
+    /**
+     * 判断是否有外置存储
+     *
+     * @return true 是 false 否
+     */
+    public static boolean isExternalStorage() {
+        return Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);
+    }
+
+
+    /**
+     * 外部公共目录
+     *
+     * @param type 文件类型 The type of storage directory to return. Should be one of
+     *             DIRECTORY_MUSIC, DIRECTORY_PODCASTS, DIRECTORY_RINGTONES,
+     *             DIRECTORY_ALARMS, DIRECTORY_NOTIFICATIONS, DIRECTORY_PICTURES,
+     *             DIRECTORY_MOVIES, DIRECTORY_DOWNLOADS,
+     *             DIRECTORY_DCIM, or DIRECTORY_DOCUMENTS. May not be null.
+     * @return 路径
+     */
+    public static File getExternalStoragePublicDirectory(String type) {
+        return Environment.getExternalStoragePublicDirectory(type);
+    }
+
+    /**
+     * 根据类型获取外部公共目录
+     *
+     * @param type 文件类型 The type of storage directory to return. Should be one of
+     *             DIRECTORY_MUSIC, DIRECTORY_PODCASTS, DIRECTORY_RINGTONES,
+     *             DIRECTORY_ALARMS, DIRECTORY_NOTIFICATIONS, DIRECTORY_PICTURES,
+     *             DIRECTORY_MOVIES, DIRECTORY_DOWNLOADS,
+     *             DIRECTORY_DCIM, or DIRECTORY_DOCUMENTS. May not be null.
+     * @return 路径
+     */
+    public static String getExternalStoragePublicPath(String type) {
+        return Environment.getExternalStoragePublicDirectory(type).getAbsolutePath();
+    }
+
+    /**
+     * 获取外部沙盒缓存目录
+     * /storage/emulated/0/Android/data/xxx/cache
+     *
+     * @return
+     */
+    public static String getExternalSandBoxCachePath() {
+        return KennieUtilsApp.getApp().getExternalCacheDir().getAbsolutePath();
+    }
+
+
+    /**
+     * 获取外部沙盒文件根目录
+     * (/storage/emulated/0/Android/data/xxx/files)
+     *
+     * @return
+     */
+    public static String getExternalSandBoxFilesPath() {
+        return getExternalSandBoxPath(null);
+    }
+
+    /**
+     * 根据类型获取外部沙盒文件目录
+     *
+     * @param type
+     * @return
+     */
+    public static String getExternalSandBoxPath(String type) {
+        return KennieUtilsApp.getApp().getExternalFilesDir(type).getAbsolutePath();
+    }
+
+    /**
+     * 获取内部沙盒缓存目录
+     * /data/data/xxx/cache
+     *
+     * @return
+     */
+    public static String getInternalCachePath() {
+        return KennieUtilsApp.getApp().getCacheDir().getAbsolutePath();
+    }
+
+
+    /**
+     * 获取内部沙盒文件目录
+     * /data/data/xxx/files
+     *
+     * @return
+     */
+    public static String getInternalFilesPath() {
+        return KennieUtilsApp.getApp().getFilesDir().getAbsolutePath();
     }
 
 }

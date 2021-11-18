@@ -1,11 +1,19 @@
 package com.kennie.library.utils.core;
 
+import android.app.ActivityManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Process;
+import android.provider.Settings;
 import android.text.TextUtils;
+
+import androidx.core.content.FileProvider;
 
 import com.kennie.library.utils.KennieUtilsApp;
 
@@ -14,13 +22,13 @@ import java.util.List;
 
 /**
  * @项目名 KennieUtils
- * @类名称 AppUtils
+ * @类名称 AppUtil
  * @类描述 App管理类
  * @创建人 Administrator
  * @修改人
  * @创建时间 2021/11/5 20:54
  */
-public class AppUtils {
+public class AppUtil {
 
     /**
      * getAppName                        : 获取 App 名称
@@ -33,7 +41,7 @@ public class AppUtils {
      * isAppInstalled                    : APP是否安装
      */
 
-    private AppUtils() {
+    private AppUtil() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
@@ -250,25 +258,113 @@ public class AppUtils {
 
 
     /**
-     * APP是否安装
+     * 判断APP应用是否安装
      *
      * @param packageName 包名
      * @return true 已安装 false 未安装
      */
     public static boolean isAppInstalled(String packageName) {
-        boolean installed = false;
-        if (TextUtils.isEmpty(packageName)) {
+        PackageManager pm = KennieUtilsApp.getApp().getPackageManager();
+        try {
+            PackageInfo info = pm.getPackageInfo(packageName, 0);
+            return info != null;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
             return false;
         }
-        List<ApplicationInfo> installedApplications = KennieUtilsApp.getApp().getPackageManager().getInstalledApplications(0);
-        for (ApplicationInfo in : installedApplications) {
-            if (packageName.equals(in.packageName)) {
-                installed = true;
-                break;
+    }
+
+    /**
+     * 判断APP程序是否为Debug模式
+     *
+     * @return true
+     */
+    public static boolean isDebugMode() {
+        try {
+            String packageName = KennieUtilsApp.getApp().getPackageName();
+            PackageInfo packageInfo = KennieUtilsApp.getApp().getPackageManager().getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
+            if (packageInfo != null) {
+                ApplicationInfo info = packageInfo.applicationInfo;
+                return (info.flags & ApplicationInfo.FLAG_DEBUGGABLE) != 0;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
+    /**
+     * 获取App中AndroidManifest.xml中的meta标签数据
+     *
+     * @param metaName meta标签名称
+     * @return meta标签数据
+     */
+    public static String getAppMetaValue(String metaName) {
+        String value = "";
+        try {
+            ApplicationInfo appInfo = KennieUtilsApp.getApp().getPackageManager().getApplicationInfo(KennieUtilsApp.getApp().getPackageName(), PackageManager.GET_META_DATA);
+            value = String.valueOf(appInfo.metaData.get(metaName));
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return value;
+    }
+
+
+    /**
+     * 安装APP，兼容Android7.0及以上版本
+     *
+     * @param file      App文件路径
+     * @param authority The authority of a FileProvider defined in a <provider> element in your app's manifest.
+     */
+    public static void installApk(File file, String authority) {
+        if (file == null || !file.exists()) {
+            return;
+        }
+        try {
+            PackageManager pm = KennieUtilsApp.getApp().getPackageManager();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                if (!pm.canRequestPackageInstalls()) {
+                    Intent intent = new Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, Uri.parse("package:" + KennieUtilsApp.getApp().getPackageName()));
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    KennieUtilsApp.getApp().startActivity(intent);
+                    return;
+                }
+            }
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            Uri uri;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                uri = FileProvider.getUriForFile(KennieUtilsApp.getApp(), authority, file);
             } else {
-                installed = false;
+                uri = Uri.fromFile(file);
+            }
+            intent.setDataAndType(uri, "application/vnd.android.package-archive");
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            KennieUtilsApp.getApp().startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
+     * 判断当前进程是否为主进程
+     *
+     * @return true 是 false 否
+     */
+    public static boolean isMainProcess() {
+        ActivityManager am = ((ActivityManager) KennieUtilsApp.getApp().getSystemService(Context.ACTIVITY_SERVICE));
+        List<ActivityManager.RunningAppProcessInfo> processInfos = am.getRunningAppProcesses();
+        String mainProcessName = KennieUtilsApp.getApp().getPackageName();
+        int myPid = Process.myPid();
+        for (ActivityManager.RunningAppProcessInfo info : processInfos) {
+            if (info.pid == myPid && mainProcessName.equals(info.processName)) {
+                return true;
             }
         }
-        return installed;
+        return false;
     }
 }
