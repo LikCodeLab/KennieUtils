@@ -13,7 +13,7 @@ import java.io.OutputStream;
 /**
  * @项目名 KennieUtils
  * @类名称 AssetUtil
- * @类描述
+ * @类描述 assets文件目录
  * @创建人 Kennie
  * @修改人
  * @创建时间 2021/11/18 21:56

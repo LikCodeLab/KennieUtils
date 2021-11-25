@@ -1,5 +1,7 @@
 package com.kennie.library.utils.core;
 
+import android.text.TextUtils;
+
 import java.io.File;
 
 /**
@@ -11,6 +13,30 @@ import java.io.File;
  * @创建时间 2021/11/18 22:11
  */
 public class FileUtil {
+
+
+    /**
+     * 判断文件是否存在
+     *
+     * @param path 路径
+     * @return
+     */
+    public static boolean isExistByFile(final String path) {
+        if (TextUtils.isEmpty(path)) return false;
+        File file = new File(path);
+        return file.exists();
+    }
+
+    /**
+     * 判断文件是否存在
+     *
+     * @param file 文件
+     * @return
+     */
+    public static boolean isExistByFile(final File file) {
+        return file != null && file.exists();
+    }
+
 
     /**
      * 删除指定目录
