@@ -8,7 +8,7 @@ package com.kennie.library.utils.config;
  * @修改人
  * @创建时间 2021/11/26 1:10
  */
-public class DatePatternConstants {
+public class DateTimePatternConstants {
 
     // ==================================yyyy-MM-dd HH:mm:ss 相关Pattern==================================
     /**

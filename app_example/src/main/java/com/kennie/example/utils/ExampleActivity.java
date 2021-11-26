@@ -5,7 +5,7 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.kennie.library.utils.core.DateUtil;
+import com.kennie.library.utils.core.DateTimeUtil;
 
 import java.util.Date;
 
@@ -19,18 +19,18 @@ public class ExampleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_example);
 
         // DateUtils
-        Log.i(TAG, "当前缺省格式日期与时间：" + DateUtil.getCurrentDate());
-        Log.i(TAG, "当前指定格式日期与时间：" + DateUtil.getCurrentDate(DateUtil.DEFAULT_TIME_PATTERN));
-        Log.i(TAG, "当前时间戳：" + DateUtil.getTimeMillis());
-        Log.i(TAG, "当前格式化时间：" + DateUtil.formatDate(System.currentTimeMillis(), "yyyy/MM/dd HH:mm:ss"));
-        Log.i(TAG, "当前格式化时间：" + DateUtil.formatDate(new Date(), DateUtil.DEFAULT_DATE_PATTERN_YMD));
+        Log.i(TAG, "当前缺省格式日期与时间：" + DateTimeUtil.getDate());
+        Log.i(TAG, "当前指定格式日期与时间：" + DateTimeUtil.getDate(DateTimeUtil.DEFAULT_TIME_PATTERN));
+        Log.i(TAG, "当前时间戳：" + DateTimeUtil.timeMillis());
+        Log.i(TAG, "当前格式化时间：" + DateTimeUtil.formatDate(System.currentTimeMillis(), "yyyy/MM/dd HH:mm:ss"));
+        Log.i(TAG, "当前格式化时间：" + DateTimeUtil.formatDate(new Date(), DateTimeUtil.DEFAULT_DATE_PATTERN_YMD));
 
-        Log.i(TAG, "前一天：" + DateUtil.getBeforeDate(DateUtil.DEFAULT_DATE_PATTERN));
-        Log.i(TAG, "前一月：" + DateUtil.getBeforeMonth(DateUtil.DEFAULT_DATE_PATTERN));
+        Log.i(TAG, "前一天：" + DateTimeUtil.getBeforeDate(DateTimeUtil.DEFAULT_DATE_PATTERN));
+        Log.i(TAG, "前一月：" + DateTimeUtil.getBeforeMonth(DateTimeUtil.DEFAULT_DATE_PATTERN));
 
-        Log.i(TAG, "获取新的间隔年份日期：" + DateUtil.formatDate(DateUtil.getDateByIntervalYears(new Date(), -1), DateUtil.DEFAULT_DATE_PATTERN_YMD));
-        Log.i(TAG, "获取新的间隔月数日期：" + DateUtil.formatDate(DateUtil.getDateByIntervalMonths(new Date(), 1), DateUtil.DEFAULT_DATE_PATTERN_YMD));
-        Log.i(TAG, "获取新的间隔天数日期：" + DateUtil.formatDate(DateUtil.getDateByIntervalDays(new Date(), 3), DateUtil.DEFAULT_DATE_PATTERN_YMD));
+        Log.i(TAG, "获取新的间隔年份日期：" + DateTimeUtil.formatDate(DateTimeUtil.getDateByIntervalYears(new Date(), -1), DateTimeUtil.DEFAULT_DATE_PATTERN_YMD));
+        Log.i(TAG, "获取新的间隔月数日期：" + DateTimeUtil.formatDate(DateTimeUtil.getDateByIntervalMonths(new Date(), 1), DateTimeUtil.DEFAULT_DATE_PATTERN_YMD));
+        Log.i(TAG, "获取新的间隔天数日期：" + DateTimeUtil.formatDate(DateTimeUtil.getDateByIntervalDays(new Date(), 3), DateTimeUtil.DEFAULT_DATE_PATTERN_YMD));
 
 
         //        Log.i(TAG, "APP名称：" + AppUtil.getAppName());

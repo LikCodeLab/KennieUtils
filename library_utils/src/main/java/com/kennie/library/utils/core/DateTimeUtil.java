@@ -12,25 +12,26 @@ import java.util.Map;
 /**
  * @项目名 KennieUtils
  * @类名称 DateUtil
- * @类描述 日期 处理类
+ * @类描述 日期时间格式化处理类
  * @创建人 Administrator
  * @修改人
  * @创建时间 2021/11/5 20:41
  */
-public class DateUtil {
+public class DateTimeUtil {
 
     public static final String DEFAULT_DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
     public static final String DEFAULT_DATE_PATTERN_YMD = "yyyy-MM-dd";
     public static final String DEFAULT_TIME_PATTERN = "HH:mm:ss";
 
+    // ==================================get 获取方法* ==================================
 
     /**
      * 获取当前日期
      *
      * @return 返回String类型 格式(yyyy-MM-dd HH:mm:ss)
      */
-    public static String getCurrentDate() {
-        return new SimpleDateFormat(DEFAULT_DATE_PATTERN, Locale.CHINA).format(new Date(getTimeMillis()));
+    public static String getDate() {
+        return new SimpleDateFormat(DEFAULT_DATE_PATTERN, Locale.CHINA).format(new Date(timeMillis()));
     }
 
     /**
@@ -38,11 +39,66 @@ public class DateUtil {
      *
      * @param pattern 格式如： yyyy-MM-dd HH:mm:ss
      * @return 返回指定模式的String类型
+     * @see com.kennie.library.utils.config.DateTimePatternConstants
      */
-    public static String getCurrentDate(String pattern) {
-        return new SimpleDateFormat(pattern, Locale.CHINA).format(new Date(getTimeMillis()));
+    public static String getDate(String pattern) {
+        return new SimpleDateFormat(pattern, Locale.CHINA).format(new Date(timeMillis()));
     }
 
+    /**
+     * 根据间隔年份数，获取当前年前后的日期
+     *
+     * @param date          日期 格式如 Date
+     * @param intervalYears 间隔年份数 如 1 -1
+     * @return
+     */
+    public static Date getDateByIntervalYears(Date date, int intervalYears) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.YEAR, intervalYears);
+        return new Date(calendar.getTime().getTime());
+    }
+
+    /**
+     * 根据间隔月份数，获取当前月前后的日期
+     *
+     * @param date           日期 格式如 Date
+     * @param intervalMonths 间隔月份数 如 1 -1
+     * @return 返回日期Date
+     */
+    public static Date getDateByIntervalMonths(Date date, int intervalMonths) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.MONTH, intervalMonths);
+        return new Date(calendar.getTime().getTime());
+    }
+
+    /**
+     * 获取前一个月份
+     *
+     * @param pattern 格式如 MM
+     * @return 返回指定模式的String类型
+     */
+    public static String getBeforeMonth(String pattern) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MONTH, -1);
+        SimpleDateFormat sdf = new SimpleDateFormat(pattern, Locale.CHINA);
+        return sdf.format(calendar.getTime());
+    }
+
+    /**
+     * 根据间隔天数，获取当前日前后的日期
+     *
+     * @param date         日期 格式如 Date
+     * @param intervalDays 间隔天数 如 1 -1
+     * @return 返回日期Date
+     */
+    public static Date getDateByIntervalDays(Date date, int intervalDays) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DAY_OF_YEAR, intervalDays);
+        return new Date(calendar.getTime().getTime());
+    }
 
     /**
      * 获取前一天
@@ -57,19 +113,6 @@ public class DateUtil {
         return sdf.format(calendar.getTime());
     }
 
-
-    /**
-     * 获取前一个月份
-     *
-     * @param pattern 格式如 MM
-     * @return 返回指定模式的String类型
-     */
-    public static String getBeforeMonth(String pattern) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.MONTH, -1);
-        SimpleDateFormat sdf = new SimpleDateFormat(pattern, Locale.CHINA);
-        return sdf.format(calendar.getTime());
-    }
 
     /**
      * 获取两个日期差值
@@ -101,49 +144,7 @@ public class DateUtil {
         return (int) (interval / (1000 * 60));
     }
 
-
-    /**
-     * 根据间隔年份数，获取当前年前后的日期
-     *
-     * @param date          日期 格式如 Date
-     * @param intervalYears 间隔年份数 如 1 -1
-     * @return
-     */
-    public static Date getDateByIntervalYears(Date date, int intervalYears) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        calendar.add(Calendar.YEAR, intervalYears);
-        return new Date(calendar.getTime().getTime());
-    }
-
-    /**
-     * 根据间隔月份数，获取当前月前后的日期
-     *
-     * @param date           日期 格式如 Date
-     * @param intervalMonths 间隔月份数 如 1 -1
-     * @return 返回日期Date
-     */
-    public static Date getDateByIntervalMonths(Date date, int intervalMonths) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        calendar.add(Calendar.MONTH, intervalMonths);
-        return new Date(calendar.getTime().getTime());
-    }
-
-    /**
-     * 根据间隔天数，获取当前日前后的日期
-     *
-     * @param date         日期 格式如 Date
-     * @param intervalDays 间隔天数 如 1 -1
-     * @return 返回日期Date
-     */
-    public static Date getDateByIntervalDays(Date date, int intervalDays) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        calendar.add(Calendar.DAY_OF_YEAR, intervalDays);
-        return new Date(calendar.getTime().getTime());
-    }
-
+    // ==================================format 格式化方法* ==================================
 
     /**
      * 格式化日期
@@ -168,6 +169,8 @@ public class DateUtil {
         return new SimpleDateFormat(pattern, Locale.getDefault()).format(date);
     }
 
+    // ==================================parse 解析方法* ==================================
+
     /**
      * 转换日期（将一个日期字符串转化成另一种日期模式的字符串）
      *
@@ -176,7 +179,7 @@ public class DateUtil {
      * @return 返回指定模式的String类型
      */
     public static String parseDate(String date_str, String target_pattern) {
-        String format = DateUtil.getPattern(date_str);
+        String format = DateTimeUtil.getPattern(date_str);
         if (format == null) {
             return null;
         }
@@ -189,6 +192,17 @@ public class DateUtil {
             e.printStackTrace();
         }
         return null;
+    }
+    
+    // ==================================other 其它方法* ==================================
+
+    /**
+     * 获取当前未格式化时间戳
+     *
+     * @return currentTimeMillis
+     */
+    public static Long timeMillis() {
+        return System.currentTimeMillis();
     }
 
 
@@ -210,7 +224,7 @@ public class DateUtil {
         //计算起止日期
         calendar.add(Calendar.DAY_OF_YEAR, week * 7 + dayOfWeek);
 
-        String startDay = new SimpleDateFormat(DEFAULT_DATE_PATTERN_YMD, Locale.CHINA).format(DateUtil.getDateByIntervalDays(calendar.getTime(), 1));
+        String startDay = new SimpleDateFormat(DEFAULT_DATE_PATTERN_YMD, Locale.CHINA).format(DateTimeUtil.getDateByIntervalDays(calendar.getTime(), 1));
         calendar.add(Calendar.DAY_OF_YEAR, 7);
         String endDay = new SimpleDateFormat(DEFAULT_DATE_PATTERN_YMD, Locale.CHINA).format(calendar.getTime());
 
@@ -221,14 +235,6 @@ public class DateUtil {
 
     }
 
-    /**
-     * 获取当前未格式化时间戳
-     *
-     * @return currentTimeMillis
-     */
-    public static Long getTimeMillis() {
-        return System.currentTimeMillis();
-    }
 
     /**
      * 获取日期模式
