@@ -1,6 +1,5 @@
 package com.kennie.library.utils;
 
-import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 import android.util.Log;
@@ -15,10 +14,8 @@ import android.util.Log;
  */
 public final class KennieUtilsApp {
 
-    private static final String TAG = KennieUtilsApp.class.getSimpleName();
 
     //全局上下文
-    @SuppressLint("StaticFieldLeak")
     private static Application sApp;
 
     private KennieUtilsApp() {

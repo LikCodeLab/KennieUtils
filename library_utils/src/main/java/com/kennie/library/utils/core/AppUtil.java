@@ -11,7 +11,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Process;
 import android.provider.Settings;
-import android.text.TextUtils;
 
 import androidx.core.content.FileProvider;
 
@@ -23,23 +22,23 @@ import java.util.List;
 /**
  * @项目名 KennieUtils
  * @类名称 AppUtil
- * @类描述 App管理类
  * @创建人 Administrator
  * @修改人
  * @创建时间 2021/11/5 20:54
+ * @desc AppUtil相关工具类
+ * <p>
+ * --获取App名称 {@link #getAppName()}
+ * --获取App包名 {@link #getAppPackage()}
+ * --获取App版本号 {@link #getAppVersionName()}
+ * --获取App版本Code {@link #getAppVersionCode()}
+ * --获取App图标 {@link #getAppIcon()}
+ * --获取App安装原始路径 {@link #getAppInstallSourcePath()}
+ * --获取App原始安装文件(APK) {@link #getAppSourceFile()}
+ * --APP是否安装 {@link #isAppInstalled(String packageName)}
+ * --判断App是否处于前台 {@link #isAppForeground()}
+ * </p>
  */
 public class AppUtil {
-
-    /**
-     * getAppName                        : 获取 App 名称
-     * getAppPackage                     : 获取 App 包名
-     * getAppVersionName                 : 获取 App 版本号
-     * getAppVersionCode                 : 获取 App 版本Code
-     * getAppIcon                        : 获取 App 图标
-     * getAppInstallSourcePath           : 获取 App 安装原始路径
-     * getAppSourceFile                  : 获取 App 原始安装文件(APK)
-     * isAppInstalled                    : APP是否安装
-     */
 
     private AppUtil() {
         throw new UnsupportedOperationException("u can't instantiate me...");
@@ -366,5 +365,47 @@ public class AppUtil {
             }
         }
         return false;
+    }
+
+
+    /**
+     * 判断App是否处于前台
+     *
+     * @return true | false
+     */
+    public static boolean isAppForeground() {
+        ActivityManager am = (ActivityManager) KennieUtilsApp.getApp().getSystemService(Context.ACTIVITY_SERVICE);
+        if (am == null) return false;
+        List<ActivityManager.RunningAppProcessInfo> info = am.getRunningAppProcesses();
+        if (info == null || info.size() == 0) return false;
+        for (ActivityManager.RunningAppProcessInfo aInfo : info) {
+            if (aInfo.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND) {
+                if (aInfo.processName.equals(KennieUtilsApp.getApp().getPackageName())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+    /**
+     * 根据包名获取APP是否正在运行
+     *
+     * @param packageName 包名
+     * @return true | false
+     */
+    public static boolean isAppRunning(String packageName) {
+        boolean isAppRunning = false;
+        ActivityManager am = (ActivityManager) KennieUtilsApp.getApp().getSystemService(Context.ACTIVITY_SERVICE);
+        List<ActivityManager.RunningTaskInfo> list = am.getRunningTasks(100);
+        for (ActivityManager.RunningTaskInfo info : list) {
+            if (info.topActivity.getPackageName().equals(packageName) && info.baseActivity.getPackageName().equals(packageName)) {
+                isAppRunning = true;
+                //find it, break
+                break;
+            }
+        }
+        return isAppRunning;
     }
 }
