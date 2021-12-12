@@ -7,10 +7,11 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.kennie.library.utils.AppUtilsCompat;
+import com.kennie.library.utils.DateUtilsCompat;
+import com.kennie.library.utils.config.DatePatternConstants;
 import com.kennie.library.utils.old.core.AlgorithmEncryptUtil;
 import com.kennie.library.utils.old.core.AppMarketUtil;
 import com.kennie.library.utils.old.core.AppPathUtil;
-import com.kennie.library.utils.old.core.DateTimeUtil;
 import com.kennie.library.utils.old.core.PhoneUtil;
 import com.kennie.library.utils.old.core.RomUtil;
 
@@ -67,18 +68,18 @@ public class ExampleActivity extends AppCompatActivity {
         Log.i(TAG, "获取APP市场：" + AppMarketUtil.isMarketAvailable());
 
         // DateUtils
-        Log.i(TAG, "当前缺省格式日期与时间：" + DateTimeUtil.getDate());
-        Log.i(TAG, "当前指定格式日期与时间：" + DateTimeUtil.getDate(DateTimeUtil.DEFAULT_TIME_PATTERN));
-        Log.i(TAG, "当前时间戳：" + DateTimeUtil.timeMillis());
-        Log.i(TAG, "当前格式化时间：" + DateTimeUtil.formatDate(System.currentTimeMillis(), "yyyy/MM/dd HH:mm:ss"));
-        Log.i(TAG, "当前格式化时间：" + DateTimeUtil.formatDate(new Date(), DateTimeUtil.DEFAULT_DATE_PATTERN_YMD));
+        Log.i(TAG, "当前缺省格式日期与时间：" + DateUtilsCompat.getCurrentDate());
+        Log.i(TAG, "当前指定格式日期与时间：" + DateUtilsCompat.getCurrentDate(DatePatternConstants.YYYY_MM_DD));
+        Log.i(TAG, "当前时间戳：" + DateUtilsCompat.getCurrentTimeMillis());
+        Log.i(TAG, "当前格式化时间：" + DateUtilsCompat.formatDate(System.currentTimeMillis(), "yyyy/MM/dd HH:mm:ss"));
+        Log.i(TAG, "当前格式化时间：" + DateUtilsCompat.formatDate(new Date(), DatePatternConstants.YYYY_MM_DD_HH_MM_SS));
 
-        Log.i(TAG, "前一天：" + DateTimeUtil.getBeforeDate(DateTimeUtil.DEFAULT_DATE_PATTERN));
-        Log.i(TAG, "前一月：" + DateTimeUtil.getBeforeMonth(DateTimeUtil.DEFAULT_DATE_PATTERN));
+        Log.i(TAG, "前一天：" + DateUtilsCompat.getBeforeDate(DatePatternConstants.YYYY_MM_DD_HH_MM_SS));
+        Log.i(TAG, "前一月：" + DateUtilsCompat.getBeforeMonth(DatePatternConstants.YYYY_MM_DD_HH_MM_SS));
 
-        Log.i(TAG, "获取新的间隔年份日期：" + DateTimeUtil.formatDate(DateTimeUtil.getDateByIntervalYears(new Date(), -1), DateTimeUtil.DEFAULT_DATE_PATTERN_YMD));
-        Log.i(TAG, "获取新的间隔月数日期：" + DateTimeUtil.formatDate(DateTimeUtil.getDateByIntervalMonths(new Date(), 1), DateTimeUtil.DEFAULT_DATE_PATTERN_YMD));
-        Log.i(TAG, "获取新的间隔天数日期：" + DateTimeUtil.formatDate(DateTimeUtil.getDateByIntervalDays(new Date(), 3), DateTimeUtil.DEFAULT_DATE_PATTERN_YMD));
+        Log.i(TAG, "获取新的间隔年份日期：" + DateUtilsCompat.formatDate(DateUtilsCompat.getDateByIntervalYears(new Date(), -1), DatePatternConstants.YYYY_MM_DD));
+        Log.i(TAG, "获取新的间隔月数日期：" + DateUtilsCompat.formatDate(DateUtilsCompat.getDateByIntervalMonths(new Date(), 1), DatePatternConstants.YYYY_MM_DD));
+        Log.i(TAG, "获取新的间隔天数日期：" + DateUtilsCompat.formatDate(DateUtilsCompat.getDateByIntervalDays(new Date(), 3), DatePatternConstants.YYYY_MM_DD));
 
 
     }

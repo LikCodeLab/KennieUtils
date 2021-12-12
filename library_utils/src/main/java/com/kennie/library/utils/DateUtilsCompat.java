@@ -1,6 +1,8 @@
-package com.kennie.library.utils.old.core;
+package com.kennie.library.utils;
 
 import android.text.TextUtils;
+
+import com.kennie.library.utils.config.DatePatternConstants;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -11,27 +13,50 @@ import java.util.Map;
 
 /**
  * @项目名 KennieUtils
- * @类名称 DateUtil
+ * @类名称 DateUtilsCompat
  * @类描述 日期时间格式化处理类
- * @创建人 Administrator
+ * @创建人 Kennie
  * @修改人
- * @创建时间 2021/11/5 20:41
+ * @创建时间 2021/12/12 23:39
+ *
+ * <p>
+ * ==================================get获取方法* ==================================
+ * --获取当前时间戳                                            {@link #getCurrentTimeMillis()}
+ * --获取当前日期                                             {@link #getCurrentDate()}
+ * --获取当前日期                                             {@link #getCurrentDate(String pattern)()}
+ * <p>
+ * --根据间隔年份数，获取当前年前后的日期                         {@link #getDateByIntervalYears(Date date, int intervalYears)}
+ * ==================================format格式化方法* ==================================
+ * --格式化日期                                              {@link #formatDate(long time, String pattern)}
+ * --格式化日期                                              {@link #formatDate(Date date, String pattern)}
+ * ==================================parse解析方法* ==================================
+ * --转换日期（将一个日期字符串转化成另一种日期模式的字符串）       {@link #parseDate(String date_str, String target_pattern)}
+ * ==================================other 其它方法* ==================================
+ *
+ * </p>
  */
-public class DateTimeUtil {
+public class DateUtilsCompat {
 
-    public static final String DEFAULT_DATE_PATTERN = "yyyy-MM-dd HH:mm:ss";
-    public static final String DEFAULT_DATE_PATTERN_YMD = "yyyy-MM-dd";
-    public static final String DEFAULT_TIME_PATTERN = "HH:mm:ss";
 
     // ==================================get 获取方法* ==================================
+
+    /**
+     * 获取当前时间戳
+     *
+     * @return currentTimeMillis
+     */
+    public static long getCurrentTimeMillis() {
+        return System.currentTimeMillis();
+    }
+
 
     /**
      * 获取当前日期
      *
      * @return 返回String类型 格式(yyyy-MM-dd HH:mm:ss)
      */
-    public static String getDate() {
-        return new SimpleDateFormat(DEFAULT_DATE_PATTERN, Locale.CHINA).format(new Date(timeMillis()));
+    public static String getCurrentDate() {
+        return getCurrentDate(DatePatternConstants.YYYY_MM_DD_HH_MM_SS);
     }
 
     /**
@@ -39,11 +64,12 @@ public class DateTimeUtil {
      *
      * @param pattern 格式如： yyyy-MM-dd HH:mm:ss
      * @return 返回指定模式的String类型
-     * @see com.kennie.library.utils.old.config.DateTimePatternConstants
+     * @see DatePatternConstants
      */
-    public static String getDate(String pattern) {
-        return new SimpleDateFormat(pattern, Locale.CHINA).format(new Date(timeMillis()));
+    public static String getCurrentDate(String pattern) {
+        return new SimpleDateFormat(pattern, Locale.CHINA).format(new Date(getCurrentTimeMillis()));
     }
+
 
     /**
      * 根据间隔年份数，获取当前年前后的日期
@@ -169,6 +195,7 @@ public class DateTimeUtil {
         return new SimpleDateFormat(pattern, Locale.getDefault()).format(date);
     }
 
+
     // ==================================parse 解析方法* ==================================
 
     /**
@@ -179,7 +206,7 @@ public class DateTimeUtil {
      * @return 返回指定模式的String类型
      */
     public static String parseDate(String date_str, String target_pattern) {
-        String format = DateTimeUtil.getPattern(date_str);
+        String format = getPattern(date_str);
         if (format == null) {
             return null;
         }
@@ -193,17 +220,9 @@ public class DateTimeUtil {
         }
         return null;
     }
-    
-    // ==================================other 其它方法* ==================================
 
-    /**
-     * 获取当前未格式化时间戳
-     *
-     * @return currentTimeMillis
-     */
-    public static Long timeMillis() {
-        return System.currentTimeMillis();
-    }
+
+    // ==================================other 其它方法* ==================================
 
 
     /**
@@ -224,9 +243,9 @@ public class DateTimeUtil {
         //计算起止日期
         calendar.add(Calendar.DAY_OF_YEAR, week * 7 + dayOfWeek);
 
-        String startDay = new SimpleDateFormat(DEFAULT_DATE_PATTERN_YMD, Locale.CHINA).format(DateTimeUtil.getDateByIntervalDays(calendar.getTime(), 1));
+        String startDay = new SimpleDateFormat(DatePatternConstants.YYYY_MM_DD, Locale.CHINA).format(getDateByIntervalDays(calendar.getTime(), 1));
         calendar.add(Calendar.DAY_OF_YEAR, 7);
-        String endDay = new SimpleDateFormat(DEFAULT_DATE_PATTERN_YMD, Locale.CHINA).format(calendar.getTime());
+        String endDay = new SimpleDateFormat(DatePatternConstants.YYYY_MM_DD, Locale.CHINA).format(calendar.getTime());
 
         HashMap<String, String> map = new HashMap<>();
         map.put("startDay", startDay);
@@ -268,4 +287,5 @@ public class DateTimeUtil {
         }
         return null;
     }
+
 }

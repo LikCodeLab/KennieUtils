@@ -152,7 +152,7 @@ public class AppUtilsCompat {
     /**
      * 判断APP应用是否安装
      *
-     * @return true|false
+     * @return 是否成功 true|false
      */
     public static boolean isAppInstalled() {
         return isAppInstalled(KennieUtilInit.getAppContext().getPackageName());
@@ -168,7 +168,7 @@ public class AppUtilsCompat {
      * 判断APP应用是否安装
      *
      * @param packageName 包名
-     * @return true|false
+     * @return 是否成功 true|false
      */
     public static boolean isAppInstalled(String packageName) {
         PackageManager pm = KennieUtilInit.getAppContext().getPackageManager();
@@ -185,7 +185,7 @@ public class AppUtilsCompat {
     /**
      * 判断APP是否为Debug模式
      *
-     * @return true|false
+     * @return 是否成功 true|false
      */
     public static boolean isAppDebugMode() {
         try {
@@ -205,7 +205,7 @@ public class AppUtilsCompat {
     /**
      * 判断App是否处于前台
      *
-     * @return true|false
+     * @return 是否成功 true|false
      */
     public static boolean isAppForeground() {
         ActivityManager am = (ActivityManager) KennieUtilInit.getApp().getSystemService(Context.ACTIVITY_SERVICE);

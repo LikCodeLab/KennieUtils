@@ -1,4 +1,4 @@
-package com.kennie.library.utils.old.config;
+package com.kennie.library.utils.config;
 
 /**
  * @项目名 KennieUtils
@@ -8,13 +8,18 @@ package com.kennie.library.utils.old.config;
  * @修改人
  * @创建时间 2021/11/26 1:10
  */
-public class DateTimePatternConstants {
+public class DatePatternConstants {
 
     // ==================================yyyy-MM-dd HH:mm:ss 相关Pattern==================================
     /**
      * yyyy-MM-dd HH:mm:ss 比如：2020-05-23 17:06:30
      */
     public static final String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
+
+    /**
+     * yyyy-MM-dd-HH:mm:ss 比如：2020-05-23-17:06:30
+     */
+    public static final String YYYY_MM_DD__HH_MM_SS = "yyyy-MM-dd-HH:mm:ss";
 
     /**
      * yyyyMMddHHmmss 比如：20200523170630
