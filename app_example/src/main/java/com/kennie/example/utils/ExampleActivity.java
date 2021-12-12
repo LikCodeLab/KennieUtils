@@ -8,11 +8,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.kennie.library.utils.AppUtilsCompat;
 import com.kennie.library.utils.DateUtilsCompat;
+import com.kennie.library.utils.PhoneDeviceCompat;
 import com.kennie.library.utils.config.DatePatternConstants;
 import com.kennie.library.utils.old.core.AlgorithmEncryptUtil;
 import com.kennie.library.utils.old.core.AppMarketUtil;
 import com.kennie.library.utils.old.core.AppPathUtil;
-import com.kennie.library.utils.old.core.PhoneUtil;
 import com.kennie.library.utils.old.core.RomUtil;
 
 import java.util.Date;
@@ -58,7 +58,7 @@ public class ExampleActivity extends AppCompatActivity {
         Log.i(TAG, "获取APP：" + AppPathUtil.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath());
 
 
-        Log.i(TAG, "获取APP：" + PhoneUtil.isPhone());
+        Log.i(TAG, "获取APP：" + PhoneDeviceCompat.isPhone());
 
 
         Log.i(TAG, "加密后的：" + AlgorithmEncryptUtil.getMD5("12345"));
