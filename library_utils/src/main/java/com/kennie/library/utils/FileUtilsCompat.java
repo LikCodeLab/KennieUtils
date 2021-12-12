@@ -31,6 +31,7 @@ import java.util.Locale;
  * --重命名文件名称                                  {@link #rename(String sourcePath, String targetPath)}
  * --删除指定目录                                   {@link #deleteDir(File dir)}
  * --删除文件                                       {@link #deleteFile(String fileName)}
+ * --获取文件                                       {@link #getFile(String filePath)}
  * --获取指定文件的可读大小                            {@link #getFileAvailable(String filePath)}
  * --获取文件大小                                    {@link #getFileFormatSize(String filePath)} -- 格式化(单位BYTE, KB, MB, GB)
  * --获取指定文件夹的大小                             {@link #getDirectorySizes(String directoryPath)}
@@ -132,6 +133,19 @@ public class FileUtilsCompat {
         return isCompleted;
     }
 
+
+    /**
+     * 获取文件
+     *
+     * @param filePath 文件路径
+     * @return File文件
+     */
+    public static File getFile(String filePath) {
+        if (isExist(filePath)) {
+            return new File(filePath);
+        }
+        return null;
+    }
 
     /**
      * 获取指定文件的可读大小

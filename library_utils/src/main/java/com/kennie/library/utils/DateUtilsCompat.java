@@ -24,7 +24,6 @@ import java.util.Map;
  * --获取当前时间戳                                            {@link #getCurrentTimeMillis()}
  * --获取当前日期                                             {@link #getCurrentDate()}
  * --获取当前日期                                             {@link #getCurrentDate(String pattern)()}
- * <p>
  * --根据间隔年份数，获取当前年前后的日期                         {@link #getDateByIntervalYears(Date date, int intervalYears)}
  * ==================================format格式化方法* ==================================
  * --格式化日期                                              {@link #formatDate(long time, String pattern)}
