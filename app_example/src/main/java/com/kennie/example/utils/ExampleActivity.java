@@ -5,7 +5,7 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.kennie.library.utils.core.DateTimeUtil;
+import com.kennie.library.utils.old.core.DateTimeUtil;
 
 import java.util.Date;
 

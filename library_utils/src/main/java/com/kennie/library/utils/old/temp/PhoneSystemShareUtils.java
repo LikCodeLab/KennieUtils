@@ -1,0 +1,196 @@
+package com.kennie.library.utils.old.temp;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
+
+import androidx.annotation.NonNull;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * @项目名 KennieUtils
+ * @类名称 PhoneSystemShareUtils
+ * @类描述 系统分享工具 调用
+ * @创建人 Administrator
+ * @修改人
+ * @创建时间 2021/11/5 20:26
+ */
+public class PhoneSystemShareUtils {
+
+    /**
+     *
+     * @param context
+     * @param intent
+     * @param title
+     * @param isFile
+     */
+    private static void startShare(Context context, Intent intent, String title, boolean isFile) {
+        if (isFile && Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        }
+        if (!(context instanceof Activity)) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        }
+        context.startActivity(Intent.createChooser(intent, title));
+    }
+
+    /**
+     * 分享文本
+     *
+     * @param context 上下文
+     * @param title   系统分享对话框的标题
+     * @param text    分享的内容
+     */
+    public static void shareText(@NonNull Context context, @NonNull String title, @NonNull String text) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_TEXT, text);
+        startShare(context, intent, title, false);
+    }
+
+    /**
+     * 分享单张图片
+     *
+     * @param context 上下文
+     * @param title   系统分享对话框的标题
+     * @param file    文件
+     */
+    @Deprecated
+    public static void shareImage(@NonNull Context context, @NonNull String title, @NonNull File file) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("image/*");
+        Uri uri;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            uri = FileUtils.getImageContentUri(context, file);
+        } else {
+            uri = Uri.fromFile(file);
+        }
+        if (uri != null) {
+            intent.putExtra(Intent.EXTRA_STREAM, uri);
+            startShare(context, intent, title, true);
+        }
+    }
+
+    public static void shareImage(@NonNull Context context, @NonNull String title, @NonNull Uri uri) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("image/*");
+        intent.putExtra(Intent.EXTRA_STREAM, uri);
+        startShare(context, intent, title, true);
+    }
+
+    /**
+     * 分享多张图片
+     *
+     * @param context 上下文
+     * @param title   系统分享对话框的标题
+     * @param files   文件
+     */
+    @Deprecated
+    public static void shareImages(@NonNull Context context, @NonNull String title, @NonNull List<File> files) {
+        Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+        intent.setType("image/*");
+        ArrayList<Uri> imageUris = new ArrayList<>();
+        for (File file : files) {
+            Uri uri;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                uri = FileUtils.getImageContentUri(context, file);
+            } else {
+                uri = Uri.fromFile(file);
+            }
+            if (uri != null) {
+                imageUris.add(uri);
+            }
+        }
+        if (imageUris.size() > 0) {
+            intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, imageUris);
+            startShare(context, intent, title, true);
+        }
+    }
+
+    /**
+     * 分享多张图片
+     *
+     * @param context   上下文
+     * @param title     系统分享对话框的标题
+     * @param imageUris 文件
+     */
+    public static void shareImagesByUri(@NonNull Context context, @NonNull String title, @NonNull ArrayList<Uri> imageUris) {
+        Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+        intent.setType("image/*");
+        if (imageUris.size() > 0) {
+            intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, imageUris);
+            startShare(context, intent, title, true);
+        }
+    }
+
+    /**
+     * 分享视频
+     *
+     * @param context 上下文
+     * @param title   系统分享对话框的标题
+     * @param file    文件
+     */
+    @Deprecated
+    public static void shareVideo(@NonNull Context context, @NonNull String title, @NonNull File file) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("video/*");
+        Uri uri;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            uri = FileUtils.getVideoContentUri(context, file);
+        } else {
+            uri = Uri.fromFile(file);
+        }
+        if (uri != null) {
+            intent.putExtra(Intent.EXTRA_STREAM, uri);
+            startShare(context, intent, title, true);
+        }
+    }
+
+    /**
+     * 分享视频
+     *
+     * @param context 上下文
+     * @param title   系统分享对话框的标题
+     * @param uri     文件
+     */
+    public static void shareVideo(@NonNull Context context, @NonNull String title, @NonNull Uri uri) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("video/*");
+        intent.putExtra(Intent.EXTRA_STREAM, uri);
+        startShare(context, intent, title, true);
+    }
+
+    /**
+     * 分享文件
+     *
+     * @param context 上下文
+     * @param title   系统分享对话框的标题
+     * @param file    文件
+     */
+    public static void shareFile(@NonNull Context context, @NonNull String title, @NonNull File file) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType(FileUtils.getMimeType(context, file.getAbsolutePath()));
+        intent.putExtra(Intent.EXTRA_STREAM, FileUtils.toUri(file, context));
+        startShare(context, intent, title, true);
+    }
+
+    /**
+     * 分享文件
+     *
+     * @param context  上下文
+     * @param title    系统分享对话框的标题
+     * @param file     文件
+     * @param mimeType 文件类型，如：application/vnd.android.package-archive
+     */
+    public static void shareFile(@NonNull Context context, @NonNull String title, @NonNull File file, @NonNull String mimeType) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType(mimeType);
+        intent.putExtra(Intent.EXTRA_STREAM, FileUtils.toUri(file, context));
+        startShare(context, intent, title, true);
+    }
+}
