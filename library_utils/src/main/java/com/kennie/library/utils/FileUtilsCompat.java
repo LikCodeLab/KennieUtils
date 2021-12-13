@@ -28,7 +28,7 @@ import java.util.Locale;
  * <p>
  * --判断文件是否存在                                {@link #isExist(String path)}
  * --判断文件是否存在                                {@link #isExist(File file)}
- * --重命名文件                                     {@link #rename(String sourcePath, String targetPath)}
+ * --重命名文件(文件夹)                              {@link #rename(String sourcePath, String targetPath)}
  * --删除指定目录                                   {@link #deleteDir(File dir)}
  * --删除文件                                       {@link #deleteFile(String fileName)}
  * --获取文件                                       {@link #getFile(String filePath)}

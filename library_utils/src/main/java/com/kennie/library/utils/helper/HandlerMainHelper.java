@@ -1,31 +1,37 @@
-package com.kennie.library.utils.old.core;
+package com.kennie.library.utils.helper;
 
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 
+
 import java.lang.ref.SoftReference;
 
 /**
- * 单例形式的Handler,主线程
+ * @项目名 KennieUtils
+ * @类名称 HandlerMainHelper
+ * @类描述 单例形式的Handler, 主线程
+ * @创建人 Kennie
+ * @修改人
+ * @创建时间 2021/12/11 10:48
  */
-public class MainHandlerUtil {
+public class HandlerMainHelper {
 
     Handler mainHandler;
-    private static volatile MainHandlerUtil instance = null;
+    private static volatile HandlerMainHelper instance = null;
 
-    private MainHandlerUtil(Looper looper) {
+    private HandlerMainHelper(Looper looper) {
         mainHandler = new Handler(looper);
     }
 
-    public static MainHandlerUtil get() {
+    public static HandlerMainHelper get() {
         //双重校验DCL单例模式
         if (instance == null) {
             //同步代码块
-            synchronized (MainHandlerUtil.class) {
+            synchronized (HandlerMainHelper.class) {
                 if (instance == null) {
                     //创建一个新的实例
-                    instance = new MainHandlerUtil(Looper.getMainLooper());
+                    instance = new HandlerMainHelper(Looper.getMainLooper());
                 }
             }
         }

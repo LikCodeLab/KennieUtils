@@ -6,14 +6,15 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.kennie.library.utils.AppPathUtilsCompat;
 import com.kennie.library.utils.AppUtilsCompat;
 import com.kennie.library.utils.DateUtilsCompat;
 import com.kennie.library.utils.FileUtilsCompat;
 import com.kennie.library.utils.PhoneDeviceCompat;
 import com.kennie.library.utils.config.DatePatternConstants;
+import com.kennie.library.utils.helper.HandlerMainHelper;
 import com.kennie.library.utils.old.core.AlgorithmEncryptUtil;
 import com.kennie.library.utils.old.core.AppMarketUtil;
-import com.kennie.library.utils.old.core.AppPathUtil;
 import com.kennie.library.utils.old.core.RomUtil;
 
 import java.io.File;
@@ -27,6 +28,17 @@ public class ExampleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_example);
+
+        // AppPathUtilsCompat
+        Log.i(TAG, "获取APP应用数据路径：" + AppPathUtilsCompat.getAppDataPath());
+        Log.i(TAG, "获取APP应用缓存路径：" + AppPathUtilsCompat.getAppCachePath());
+        Log.i(TAG, "获取APP应用文件路径：" + AppPathUtilsCompat.getAppFilesPath());
+        Log.i(TAG, "获取APP应用SP路径：" + AppPathUtilsCompat.getAppSpPath());
+        Log.i(TAG, "获取APP应用数据库路径：" + AppPathUtilsCompat.getAppDbPath());
+        Log.i(TAG, "获取APP应用数据库路径：" + AppPathUtilsCompat.getAppDbPath("databaseName"));
+        Log.i(TAG, "获取外存储路径：" + AppPathUtilsCompat.getExternalStoragePath());
+        Log.i(TAG, "获取外存储公共目录路径(不同类别)：" + AppPathUtilsCompat.getExternalStoragePublicPath(Environment.DIRECTORY_DCIM));
+
 
         // AppUtilsCompat
         Log.i(TAG, "APP名称：" + AppUtilsCompat.getAppName());
@@ -56,29 +68,13 @@ public class ExampleActivity extends AppCompatActivity {
         Log.i(TAG, "前一月：" + DateUtilsCompat.getBeforeMonth(DatePatternConstants.YYYY_MM_DD_HH_MM_SS));
 
         // FileUtilsCompat
-        Log.i(TAG, "判断文件是否存在：" + FileUtilsCompat.isExist(AppPathUtil.getExternalStoragePath() + File.separator + "app_clerk-debug.apk"));
-        String sourcePath = AppPathUtil.getExternalStoragePath() + File.separator + "app_clerk-debug_new.apk";
-        String targetPath = AppPathUtil.getExternalStoragePath() + File.separator + "app_clerk-debug.apk";
+        Log.i(TAG, "判断文件是否存在：" + FileUtilsCompat.isExist(AppPathUtilsCompat.getExternalStoragePath() + File.separator + "app_clerk-debug.apk"));
+        String sourcePath = AppPathUtilsCompat.getExternalStoragePath() + File.separator + "app_clerk-debug_new.apk";
+        String targetPath = AppPathUtilsCompat.getExternalStoragePath() + File.separator + "app_clerk-debug.apk";
         Log.i(TAG, "判断重命名文件名称是否成功：" + FileUtilsCompat.rename(sourcePath, targetPath));
 
 
         Log.i(TAG, "ROM：" + RomUtil.isXiaomi());
-
-
-        Log.i(TAG, "获取APP应用数据路径：" + AppPathUtil.getAppDataPath());
-        Log.i(TAG, "获取APP应用缓存路径：" + AppPathUtil.getAppCachePath());
-        Log.i(TAG, "获取APP应用数据库路径：" + AppPathUtil.getAppDbPath());
-        Log.i(TAG, "获取APP应用数据库路径：" + AppPathUtil.getAppDbPath("databaseName"));
-        Log.i(TAG, "获取APP应用文件路径：" + AppPathUtil.getAppFilesPath());
-        Log.i(TAG, "获取APP应用SP路径：" + AppPathUtil.getAppSpPath());
-
-        Log.i(TAG, "获取APP：" + AppPathUtil.getExternalStoragePath());
-        Log.i(TAG, "获取APP：" + AppPathUtil.getAppExternalDataPath());
-        Log.i(TAG, "获取APP：" + AppPathUtil.getAppExternalOBBPath());
-        Log.i(TAG, "获取APP：" + AppPathUtil.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).getAbsolutePath());
-
-
-        Log.i(TAG, "获取APP：" + PhoneDeviceCompat.isPhone());
 
 
         Log.i(TAG, "加密后的：" + AlgorithmEncryptUtil.getMD5("12345"));
@@ -87,6 +83,12 @@ public class ExampleActivity extends AppCompatActivity {
 
         Log.i(TAG, "获取APP市场：" + AppMarketUtil.isMarketAvailable());
 
+        HandlerMainHelper.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Log.i(TAG, "测试HandlerMainHelper.postDelayed:" + HandlerMainHelper.isMain());
 
+            }
+        }, 2000);
     }
 }
