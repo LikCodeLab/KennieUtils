@@ -88,17 +88,6 @@ public class ScreenUtil {
     }
 
     /**
-     * 是否为平板
-     *
-     * @return true 是 false 否
-     */
-    public static boolean isPad() {
-        Configuration configuration = KennieUtilInit.getApp().getResources().getConfiguration();
-        int x = configuration.screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK;
-        return x >= Configuration.SCREENLAYOUT_SIZE_LARGE;
-    }
-
-    /**
      * 获取状态栏高度
      *
      * @return 状态栏高度

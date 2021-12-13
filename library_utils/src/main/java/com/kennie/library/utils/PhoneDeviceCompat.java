@@ -23,7 +23,7 @@ import java.io.File;
  *
  * <p>
  * --判断设备是否是手机                                      {@link #isPhone()}
- * --判断是否是平板                                         {@link #isTablet()}
+ * --判断是否是平板                                         {@link #isPad()}
  * --判断是否是模拟器                                       {@link #isEmulator()}
  * --判断设备是否rooted                                    {@link #isRooted()}
  * --判断设备ADB是否可用                                    {@link #isAdbEnabled()}
@@ -58,7 +58,7 @@ public class PhoneDeviceCompat {
      *
      * @return {@code true}: yes<br>{@code false}: no
      */
-    public static boolean isTablet() {
+    public static boolean isPad() {
         return (KennieUtilInit.getAppContext().getResources().getConfiguration().screenLayout
                 & Configuration.SCREENLAYOUT_SIZE_MASK)
                 >= Configuration.SCREENLAYOUT_SIZE_LARGE;

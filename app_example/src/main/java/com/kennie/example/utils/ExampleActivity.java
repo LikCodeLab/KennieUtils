@@ -2,6 +2,7 @@ package com.kennie.example.utils;
 
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.Settings;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import com.kennie.library.utils.AppPathUtilsCompat;
 import com.kennie.library.utils.AppUtilsCompat;
 import com.kennie.library.utils.DateUtilsCompat;
 import com.kennie.library.utils.FileUtilsCompat;
+import com.kennie.library.utils.IntentUtilsCompat;
 import com.kennie.library.utils.PhoneDeviceCompat;
 import com.kennie.library.utils.config.DatePatternConstants;
 import com.kennie.library.utils.helper.HandlerMainHelper;
@@ -87,6 +89,8 @@ public class ExampleActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Log.i(TAG, "测试HandlerMainHelper.postDelayed:" + HandlerMainHelper.isMain());
+                //IntentUtilsCompat.gotoSettings(Settings.ACTION_SETTINGS);
+                IntentUtilsCompat.gotoAppNotificationSetting();
 
             }
         }, 2000);

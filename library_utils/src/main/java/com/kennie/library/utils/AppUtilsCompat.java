@@ -1,6 +1,8 @@
 package com.kennie.library.utils;
 
 import android.app.ActivityManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -11,6 +13,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
 
+import androidx.annotation.RequiresApi;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.FileProvider;
 
 import java.io.File;
@@ -36,6 +40,8 @@ import java.util.List;
  * --判断APP是否安装                            {@link #isAppInstalled(String packageName)}
  * --判断APP是否为Debug模式                      {@link #isAppDebugMode()}
  * --判断App是否处于前台                         {@link #isAppForeground()}
+ * --判断通知功能是否开启                         {@link #isNotificationEnabled()}
+ * --判断通知渠道是否开启                         {@link #isNotificationChannelEnabled(String channelId)}
  * --安装APP（兼容Android7.0及以上版本）          {@link #installApk(File file, String authority)}
  * </p>
  */
@@ -222,6 +228,27 @@ public class AppUtilsCompat {
         return false;
     }
 
+    /**
+     * 判断通知功能是否开启
+     *
+     * @return {@code true}: 已开启<br>{@code false}: 未开启
+     */
+    public static boolean isNotificationEnabled() {
+        return NotificationManagerCompat.from(KennieUtilInit.getAppContext()).areNotificationsEnabled();
+    }
+
+    /**
+     * 判断通知渠道是否开启
+     *
+     * @param channelId 渠道ID
+     * @return {@code true}: 已开启<br>{@code false}: 未开启
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public static boolean isNotificationChannelEnabled(String channelId) {
+        NotificationManager notificationManager = (NotificationManager) KennieUtilInit.getApp().getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationChannel notificationChannel = notificationManager.getNotificationChannel(channelId);
+        return notificationChannel == null || notificationChannel.getImportance() != NotificationManager.IMPORTANCE_NONE;
+    }
 
     /**
      * 安装APP（兼容Android7.0及以上版本）
