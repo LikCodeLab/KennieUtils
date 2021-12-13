@@ -13,6 +13,7 @@ import com.kennie.library.utils.DateUtilsCompat;
 import com.kennie.library.utils.FileUtilsCompat;
 import com.kennie.library.utils.IntentUtilsCompat;
 import com.kennie.library.utils.PhoneDeviceCompat;
+import com.kennie.library.utils.ScreenUtilsCompat;
 import com.kennie.library.utils.config.DatePatternConstants;
 import com.kennie.library.utils.helper.HandlerMainHelper;
 import com.kennie.library.utils.old.core.AlgorithmEncryptUtil;
@@ -74,6 +75,21 @@ public class ExampleActivity extends AppCompatActivity {
         String sourcePath = AppPathUtilsCompat.getExternalStoragePath() + File.separator + "app_clerk-debug_new.apk";
         String targetPath = AppPathUtilsCompat.getExternalStoragePath() + File.separator + "app_clerk-debug.apk";
         Log.i(TAG, "判断重命名文件名称是否成功：" + FileUtilsCompat.rename(sourcePath, targetPath));
+
+        // ScreenUtilsCompat
+        Log.i(TAG, "获取状态栏高度：" + ScreenUtilsCompat.getStatusBarHeight());
+        Log.i(TAG, "获取ActionBar高度：" + ScreenUtilsCompat.getActionBarHeight());
+        Log.i(TAG, "获取导航栏高度：" + ScreenUtilsCompat.getNavigationBarHeight());
+        Log.i(TAG, "获取屏幕宽度：" + ScreenUtilsCompat.getScreenWidth());
+        Log.i(TAG, "获取屏幕高度：" + ScreenUtilsCompat.getScreenHeight());
+        Log.i(TAG, "dp转换为px：" + ScreenUtilsCompat.dp2px(48));
+        Log.i(TAG, "sp转换为px：" + ScreenUtilsCompat.sp2px(48));
+
+
+
+
+
+
 
 
         Log.i(TAG, "ROM：" + RomUtil.isXiaomi());
