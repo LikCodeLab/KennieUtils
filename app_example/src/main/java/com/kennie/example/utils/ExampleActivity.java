@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.kennie.library.utils.AppUtilsCompat;
 import com.kennie.library.utils.DateUtilsCompat;
+import com.kennie.library.utils.FileUtilsCompat;
 import com.kennie.library.utils.PhoneDeviceCompat;
 import com.kennie.library.utils.config.DatePatternConstants;
 import com.kennie.library.utils.old.core.AlgorithmEncryptUtil;
@@ -15,6 +16,7 @@ import com.kennie.library.utils.old.core.AppMarketUtil;
 import com.kennie.library.utils.old.core.AppPathUtil;
 import com.kennie.library.utils.old.core.RomUtil;
 
+import java.io.File;
 import java.util.Date;
 
 public class ExampleActivity extends AppCompatActivity {
@@ -41,6 +43,24 @@ public class ExampleActivity extends AppCompatActivity {
         // Log.i(TAG, "安装APP（兼容Android7.0及以上版本） ：");
         // AppUtilsCompat.installApk(new File(""), "");
 
+        // DateUtilsCompat
+        Log.i(TAG, "当前时间戳：" + DateUtilsCompat.getCurrentTimeMillis());
+        Log.i(TAG, "当前缺省格式日期与时间：" + DateUtilsCompat.getCurrentDate());
+        Log.i(TAG, "当前指定格式日期与时间：" + DateUtilsCompat.getCurrentDate(DatePatternConstants.YYYY_MM_DD_HH_MM_SS_CN_ALL));
+        Log.i(TAG, "当前格式化时间：" + DateUtilsCompat.formatDate(System.currentTimeMillis(), "yyyy/MM/dd HH:mm:ss"));
+        Log.i(TAG, "当前格式化时间：" + DateUtilsCompat.formatDate(new Date(), DatePatternConstants.YYYY_MM_DD_HH_MM_SS));
+        Log.i(TAG, "获取新的间隔年份日期：" + DateUtilsCompat.formatDate(DateUtilsCompat.getDateByIntervalYears(new Date(), -1), DatePatternConstants.YYYY_MM_DD));
+        Log.i(TAG, "获取新的间隔月数日期：" + DateUtilsCompat.formatDate(DateUtilsCompat.getDateByIntervalMonths(new Date(), 1), DatePatternConstants.YYYY_MM_DD));
+        Log.i(TAG, "获取新的间隔天数日期：" + DateUtilsCompat.formatDate(DateUtilsCompat.getDateByIntervalDays(new Date(), 3), DatePatternConstants.YYYY_MM_DD));
+        Log.i(TAG, "前一天：" + DateUtilsCompat.getBeforeDate(DatePatternConstants.YYYY_MM_DD_HH_MM_SS));
+        Log.i(TAG, "前一月：" + DateUtilsCompat.getBeforeMonth(DatePatternConstants.YYYY_MM_DD_HH_MM_SS));
+
+        // FileUtilsCompat
+        Log.i(TAG, "判断文件是否存在：" + FileUtilsCompat.isExist(AppPathUtil.getExternalStoragePath() + File.separator + "app_clerk-debug.apk"));
+        String sourcePath = AppPathUtil.getExternalStoragePath() + File.separator + "app_clerk-debug_new.apk";
+        String targetPath = AppPathUtil.getExternalStoragePath() + File.separator + "app_clerk-debug.apk";
+        Log.i(TAG, "判断重命名文件名称是否成功：" + FileUtilsCompat.rename(sourcePath, targetPath));
+
 
         Log.i(TAG, "ROM：" + RomUtil.isXiaomi());
 
@@ -66,20 +86,6 @@ public class ExampleActivity extends AppCompatActivity {
         Log.i(TAG, "加密后的：" + AlgorithmEncryptUtil.getHash("12345", AlgorithmEncryptUtil.SHA256));
 
         Log.i(TAG, "获取APP市场：" + AppMarketUtil.isMarketAvailable());
-
-        // DateUtils
-        Log.i(TAG, "当前缺省格式日期与时间：" + DateUtilsCompat.getCurrentDate());
-        Log.i(TAG, "当前指定格式日期与时间：" + DateUtilsCompat.getCurrentDate(DatePatternConstants.YYYY_MM_DD));
-        Log.i(TAG, "当前时间戳：" + DateUtilsCompat.getCurrentTimeMillis());
-        Log.i(TAG, "当前格式化时间：" + DateUtilsCompat.formatDate(System.currentTimeMillis(), "yyyy/MM/dd HH:mm:ss"));
-        Log.i(TAG, "当前格式化时间：" + DateUtilsCompat.formatDate(new Date(), DatePatternConstants.YYYY_MM_DD_HH_MM_SS));
-
-        Log.i(TAG, "前一天：" + DateUtilsCompat.getBeforeDate(DatePatternConstants.YYYY_MM_DD_HH_MM_SS));
-        Log.i(TAG, "前一月：" + DateUtilsCompat.getBeforeMonth(DatePatternConstants.YYYY_MM_DD_HH_MM_SS));
-
-        Log.i(TAG, "获取新的间隔年份日期：" + DateUtilsCompat.formatDate(DateUtilsCompat.getDateByIntervalYears(new Date(), -1), DatePatternConstants.YYYY_MM_DD));
-        Log.i(TAG, "获取新的间隔月数日期：" + DateUtilsCompat.formatDate(DateUtilsCompat.getDateByIntervalMonths(new Date(), 1), DatePatternConstants.YYYY_MM_DD));
-        Log.i(TAG, "获取新的间隔天数日期：" + DateUtilsCompat.formatDate(DateUtilsCompat.getDateByIntervalDays(new Date(), 3), DatePatternConstants.YYYY_MM_DD));
 
 
     }

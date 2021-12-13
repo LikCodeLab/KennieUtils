@@ -28,7 +28,7 @@ import java.util.Locale;
  * <p>
  * --判断文件是否存在                                {@link #isExist(String path)}
  * --判断文件是否存在                                {@link #isExist(File file)}
- * --重命名文件名称                                  {@link #rename(String sourcePath, String targetPath)}
+ * --重命名文件                                     {@link #rename(String sourcePath, String targetPath)}
  * --删除指定目录                                   {@link #deleteDir(File dir)}
  * --删除文件                                       {@link #deleteFile(String fileName)}
  * --获取文件                                       {@link #getFile(String filePath)}
@@ -70,11 +70,17 @@ public class FileUtilsCompat {
 
 
     /**
-     * 重命名文件名称
+     * 重命名文件(文件夹)
+     * 需读写权限
+     * 1、如果目标路径下有相同的文件名称，则命名失败（或者移动失败）【文件重命名】；
+     * 2、如果目标路径不存在，则文件从源路径移动到目标路径失败【文件移动重命名】；
+     * 3、如果目标路径目录不为空，则文件夹修改失败【文件夹重命名】；
      *
      * @param sourcePath 源文件路径(包含文件名称)
      * @param targetPath 目标文件路径(包含文件名称)
      * @return 是否成功 true|false
+     * @code <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+     * @code <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
      */
     public static boolean rename(String sourcePath, String targetPath) {
         boolean isCompleted = false;
@@ -84,6 +90,7 @@ public class FileUtilsCompat {
                 File targetFile = new File(targetPath);
                 isCompleted = sourceFile.renameTo(targetFile);
             }
+
         }
         return isCompleted;
     }
