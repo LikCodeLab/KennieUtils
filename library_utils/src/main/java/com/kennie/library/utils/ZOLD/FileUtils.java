@@ -1,4 +1,4 @@
-package com.kennie.library.utils.ZOLD.temp;
+package com.kennie.library.utils.ZOLD;
 
 import android.content.ContentUris;
 import android.content.ContentValues;

@@ -1,4 +1,4 @@
-package com.kennie.library.utils.ZOLD.temp;
+package com.kennie.library.utils.ZOLD;
 
 import android.content.Context;
 import android.content.res.Resources;

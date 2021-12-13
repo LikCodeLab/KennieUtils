@@ -1,4 +1,4 @@
-package com.kennie.library.utils.ZOLD.core;
+package com.kennie.library.utils;
 
 import static android.widget.Toast.makeText;
 
@@ -8,13 +8,13 @@ import android.widget.Toast;
 
 /**
  * @项目名 KennieUtils
- * @类名称 ToastUtil
- * @类描述
+ * @类名称 ToastUtilsCompat
+ * @类描述 吐司
  * @创建人 Kennie
  * @修改人
  * @创建时间 2021/11/18 23:11
  */
-public class ToastUtil {
+public class ToastUtilsCompat {
 
     private static Application app;
 

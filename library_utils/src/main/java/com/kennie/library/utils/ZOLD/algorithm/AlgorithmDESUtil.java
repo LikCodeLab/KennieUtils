@@ -1,4 +1,4 @@
-package com.kennie.library.utils.ZOLD.core;
+package com.kennie.library.utils.ZOLD.algorithm;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;

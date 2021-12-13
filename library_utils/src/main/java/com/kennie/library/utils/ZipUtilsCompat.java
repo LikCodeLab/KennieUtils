@@ -2,14 +2,13 @@ package com.kennie.library.utils;
 
 import android.text.TextUtils;
 
-import com.kennie.library.utils.ZOLD.temp.IOUtils;
+import com.kennie.library.utils.ZOLD.IOUtils;
 
 import net.lingala.zip4j.exception.ZipException;
 import net.lingala.zip4j.model.FileHeader;
 import net.lingala.zip4j.util.InternalZipConstants;
 
 import java.io.BufferedInputStream;
-import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

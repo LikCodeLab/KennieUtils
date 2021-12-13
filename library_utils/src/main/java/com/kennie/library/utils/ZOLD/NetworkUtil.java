@@ -1,11 +1,11 @@
-package com.kennie.library.utils.ZOLD.core;
+package com.kennie.library.utils.ZOLD;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
 
-import com.kennie.library.utils.old.core.LogUtil;
+import com.kennie.library.utils.ZOLD.LogUtil;
 
 import java.lang.reflect.Method;
 

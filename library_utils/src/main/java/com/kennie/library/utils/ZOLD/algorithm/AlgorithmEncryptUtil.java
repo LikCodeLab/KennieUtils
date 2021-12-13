@@ -1,4 +1,6 @@
-package com.kennie.library.utils.ZOLD.core;
+package com.kennie.library.utils.ZOLD.algorithm;
+
+import com.kennie.library.utils.ZOLD.ByteUtil;
 
 import java.io.File;
 import java.io.FileInputStream;

@@ -15,9 +15,9 @@ import com.kennie.library.utils.ScreenUtilsCompat;
 import com.kennie.library.utils.StringUtilsCompat;
 import com.kennie.library.utils.config.DatePatternConstants;
 import com.kennie.library.utils.helper.HandlerMainHelper;
-import com.kennie.library.utils.ZOLD.core.AlgorithmEncryptUtil;
-import com.kennie.library.utils.ZOLD.core.AppMarketUtil;
-import com.kennie.library.utils.ZOLD.core.RomUtil;
+import com.kennie.library.utils.ZOLD.algorithm.AlgorithmEncryptUtil;
+import com.kennie.library.utils.ZOLD.AppMarketUtil;
+import com.kennie.library.utils.ZOLD.RomUtil;
 
 import java.io.File;
 import java.util.Date;

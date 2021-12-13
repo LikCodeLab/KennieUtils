@@ -1,4 +1,4 @@
-package com.kennie.library.utils.ZOLD.core;
+package com.kennie.library.utils.ZOLD;
 
 import android.annotation.SuppressLint;
 import android.os.Build;
