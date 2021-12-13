@@ -2,6 +2,8 @@ package com.kennie.library.utils;
 
 import android.text.TextUtils;
 
+import com.kennie.library.utils.ZOLD.temp.IOUtils;
+
 import net.lingala.zip4j.exception.ZipException;
 import net.lingala.zip4j.model.FileHeader;
 import net.lingala.zip4j.util.InternalZipConstants;
@@ -108,7 +110,7 @@ public class ZipUtilsCompat {
         } finally {
             if (zos != null) {
                 zos.finish();
-                closeIO(zos);
+                IOUtils.close(zos);
             }
         }
     }
@@ -179,7 +181,7 @@ public class ZipUtilsCompat {
         } finally {
             if (zos != null) {
                 zos.finish();
-                closeIO(zos);
+                IOUtils.close(zos);
             }
         }
     }
@@ -232,7 +234,7 @@ public class ZipUtilsCompat {
                 }
                 zos.closeEntry();
             } finally {
-                closeIO(is);
+                IOUtils.close(is);
             }
         }
         return true;
@@ -467,26 +469,5 @@ public class ZipUtilsCompat {
         return new ZipFile(zipFile).entries();
     }
 
-
-    
-    /**
-     * 关闭IO流
-     *
-     * @param closeables
-     */
-    private static void closeIO(Closeable... closeables) {
-        if (closeables == null) {
-            return;
-        }
-        try {
-            for (Closeable closeable : closeables) {
-                if (closeable != null) {
-                    closeable.close();
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
 }

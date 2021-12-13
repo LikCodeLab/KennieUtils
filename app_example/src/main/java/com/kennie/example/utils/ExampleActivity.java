@@ -2,7 +2,6 @@ package com.kennie.example.utils;
 
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.Settings;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,13 +11,13 @@ import com.kennie.library.utils.AppUtilsCompat;
 import com.kennie.library.utils.DateUtilsCompat;
 import com.kennie.library.utils.FileUtilsCompat;
 import com.kennie.library.utils.IntentUtilsCompat;
-import com.kennie.library.utils.PhoneDeviceCompat;
 import com.kennie.library.utils.ScreenUtilsCompat;
+import com.kennie.library.utils.StringUtilsCompat;
 import com.kennie.library.utils.config.DatePatternConstants;
 import com.kennie.library.utils.helper.HandlerMainHelper;
-import com.kennie.library.utils.old.core.AlgorithmEncryptUtil;
-import com.kennie.library.utils.old.core.AppMarketUtil;
-import com.kennie.library.utils.old.core.RomUtil;
+import com.kennie.library.utils.ZOLD.core.AlgorithmEncryptUtil;
+import com.kennie.library.utils.ZOLD.core.AppMarketUtil;
+import com.kennie.library.utils.ZOLD.core.RomUtil;
 
 import java.io.File;
 import java.util.Date;
@@ -86,10 +85,9 @@ public class ExampleActivity extends AppCompatActivity {
         Log.i(TAG, "sp转换为px：" + ScreenUtilsCompat.sp2px(48));
 
 
-
-
-
-
+        // StringUtilsCompat
+        Log.i(TAG, "格式化字符串：" + StringUtilsCompat.formatSafeStr("15062255123", 3, 4));
+        Log.i(TAG, "格式化时长：" + StringUtilsCompat.formatDurationStr(65));
 
 
         Log.i(TAG, "ROM：" + RomUtil.isXiaomi());

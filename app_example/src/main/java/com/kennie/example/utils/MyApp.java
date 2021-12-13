@@ -3,7 +3,7 @@ package com.kennie.example.utils;
 import android.app.Application;
 
 import com.kennie.library.utils.KennieUtilInit;
-import com.kennie.library.utils.old.config.MMKVConfig;
+import com.kennie.library.utils.mmkv.MMKVConfig;
 
 /**
  * @项目名 KennieUtils
