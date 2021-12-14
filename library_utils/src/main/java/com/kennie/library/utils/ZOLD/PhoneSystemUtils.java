@@ -34,9 +34,6 @@ import java.util.Objects;
  */
 public class PhoneSystemUtils {
 
-
-
-
     /**
      * 获取总内存大小，单位是byte
      */

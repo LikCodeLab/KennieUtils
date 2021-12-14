@@ -1,4 +1,4 @@
-package com.kennie.library.utils.mmkv;
+package com.kennie.library.utils.ZOLD;
 
 /**
  * @项目名 KennieUtils
