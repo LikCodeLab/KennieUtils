@@ -17,7 +17,11 @@ import androidx.annotation.RequiresApi;
  * @创建时间 2021/12/12 22:05
  *
  * <p>
- * --启动指定包名APP                                {@link #launchApp(String packageName)}
+ * --启动指定包名APP                                                {@link #launchApp(String packageName)}
+ * --跳转到相关详情页(根据actionType)                                {@link #gotoSettings(String actionType)}
+ * --跳转到App应用详情页                                            {@link #gotoAppDetailSettings()}
+ * --跳转应用通知设置页                                              {@link #gotoAppNotificationSetting()}
+
  * </p>
  */
 public class IntentUtilsCompat {
