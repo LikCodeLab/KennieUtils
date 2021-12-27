@@ -1,10 +1,10 @@
-package com.kennie.library.utils;
+package com.kennie.utils;
 
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.kennie.library.utils.config.DatePatternConstants;
-import com.kennie.library.utils.entity.FileEntity;
+import com.kennie.utils.config.DatePatternConstants;
+import com.kennie.utils.model.FileModel;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -41,9 +41,9 @@ import java.util.Locale;
  * --读取文件内容                                    {@link #readFileData(String fileName)}
  * </p>
  */
-public class FileUtilsCompat {
+public class FileUtils {
 
-    private static final String TAG = FileUtilsCompat.class.getSimpleName();
+    private static final String TAG = FileUtils.class.getSimpleName();
 
 
     /**
@@ -268,8 +268,8 @@ public class FileUtilsCompat {
      * @param directoryPath 文件夹路径
      * @return 文件夹下的列表
      */
-    public static List<FileEntity> getFileDirectory(String directoryPath) {
-        List<FileEntity> fileListEntityList = new ArrayList<>();
+    public static List<FileModel> getFileDirectory(String directoryPath) {
+        List<FileModel> fileListEntityList = new ArrayList<>();
         File file = new File(directoryPath);
         if (file.exists() && file.isDirectory()) {
             File fileList[] = file.listFiles();//文件夹目录下的所有文件
@@ -284,8 +284,8 @@ public class FileUtilsCompat {
                     }
                     //获取上次修改的时间
                     String lastModified = new SimpleDateFormat(DatePatternConstants.YYYY_MM_DD__HH_MM_SS, Locale.CHINA).format(new Date(fileList[i].lastModified()));
-                    FileEntity fileEntity = new FileEntity(fileList[i].getName(), size, file.getAbsolutePath() + "/", lastModified, fileList[i].isDirectory());
-                    fileListEntityList.add(fileEntity);
+                    FileModel fileModel = new FileModel(fileList[i].getName(), size, file.getAbsolutePath() + "/", lastModified, fileList[i].isDirectory());
+                    fileListEntityList.add(fileModel);
                 }
             }
         }

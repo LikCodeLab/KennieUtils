@@ -1,4 +1,4 @@
-package com.kennie.library.utils;
+package com.kennie.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -15,7 +15,7 @@ import java.io.File;
 
 /**
  * @项目名 KennieUtils
- * @类名称 PhoneDeviceCompat
+ * @类名称 PhoneDeviceUtils
  * @类描述 手机设备管理类
  * @创建人 Kennie
  * @修改人
@@ -35,9 +35,9 @@ import java.io.File;
  * --获取设备AndroidID                                    {@link #getAndroidID()}
  * </p>
  */
-public class PhoneDeviceCompat {
+public class PhoneDeviceUtils {
 
-    private PhoneDeviceCompat() {
+    private PhoneDeviceUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 

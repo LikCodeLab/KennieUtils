@@ -1,4 +1,4 @@
-package com.kennie.library.utils;
+package com.kennie.utils;
 
 import static android.widget.Toast.makeText;
 
@@ -8,13 +8,13 @@ import android.widget.Toast;
 
 /**
  * @项目名 KennieUtils
- * @类名称 ToastUtilsCompat
+ * @类名称 ToastUtils
  * @类描述 吐司
  * @创建人 Kennie
  * @修改人
  * @创建时间 2021/11/18 23:11
  */
-public class ToastUtilsCompat {
+public class ToastUtils {
 
     private static Application app;
 

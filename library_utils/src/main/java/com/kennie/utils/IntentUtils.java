@@ -1,4 +1,4 @@
-package com.kennie.library.utils;
+package com.kennie.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -24,7 +24,7 @@ import androidx.annotation.RequiresApi;
 
  * </p>
  */
-public class IntentUtilsCompat {
+public class IntentUtils {
 
 
     /**

@@ -1,4 +1,4 @@
-package com.kennie.library.utils;
+package com.kennie.utils;
 
 import android.text.TextUtils;
 
@@ -20,7 +20,7 @@ import java.util.Locale;
  * --*********                                      {@link #}
  * </p>
  */
-public class StringUtilsCompat {
+public class StringUtils {
 
 
     // ==================================get 获取方法* ==================================

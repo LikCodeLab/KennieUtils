@@ -1,4 +1,4 @@
-package com.kennie.library.utils;
+package com.kennie.utils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -9,13 +9,13 @@ import java.io.OutputStream;
 
 /**
  * @项目名 KennieUtils
- * @类名称 AssetUtil
+ * @类名称 AssetUtils
  * @类描述 assets文件目录
  * @创建人 Kennie
  * @修改人
  * @创建时间 2021/11/18 21:56
  */
-public class AssetUtilsCompat {
+public class AssetUtils {
 
     /**
      * 复制assets目录下的文件到指定目录,如复制到SD卡上，需申请WRITE_EXTERNAL_STORAGE权限

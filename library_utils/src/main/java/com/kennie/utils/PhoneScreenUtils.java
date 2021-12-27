@@ -1,14 +1,13 @@
-package com.kennie.library.utils;
+package com.kennie.utils;
 
 
-import android.content.Context;
 import android.content.res.Configuration;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 
 /**
  * @项目名 KennieUtils
- * @类名称 PhoneScreenUtilsCompat
+ * @类名称 PhoneScreenUtils
  * @类描述 手机屏幕管理类
  * @创建人 Kennie
  * @修改人
@@ -26,7 +25,7 @@ import android.util.TypedValue;
  *
  * </p>
  */
-public class PhoneScreenUtilsCompat {
+public class PhoneScreenUtils {
 
 
     /**

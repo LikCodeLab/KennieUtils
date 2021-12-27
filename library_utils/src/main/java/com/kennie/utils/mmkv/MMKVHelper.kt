@@ -1,4 +1,4 @@
-package com.kennie.library.utils.mmkv
+package com.kennie.utils.mmkv
 
 import com.tencent.mmkv.MMKV
 

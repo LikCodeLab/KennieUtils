@@ -1,11 +1,11 @@
-package com.kennie.library.utils;
+package com.kennie.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
  * @项目名 KennieUtils
- * @类名称 SpUtilsCompat
+ * @类名称 SpUtils
  * @类描述 配置存储相关工具类
  * @创建人 Kennie
  * @修改人
@@ -25,7 +25,7 @@ import android.content.SharedPreferences;
  * --清空全部key                                    {@link #clear()}
  * </p>
  */
-public class SpUtilsCompat {
+public class SpUtils {
 
     private static final String DEFAULT_FILE_NAME = "app_config";
 

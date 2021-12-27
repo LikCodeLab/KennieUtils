@@ -1,8 +1,8 @@
-package com.kennie.library.utils;
+package com.kennie.utils;
 
 import android.text.TextUtils;
 
-import com.kennie.library.utils.config.DatePatternConstants;
+import com.kennie.utils.config.DatePatternConstants;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * @项目名 KennieUtils
- * @类名称 DateUtilsCompat
+ * @类名称 DateUtils
  * @类描述 日期时间格式化处理类
  * @创建人 Kennie
  * @修改人
@@ -34,7 +34,7 @@ import java.util.Map;
  *
  * </p>
  */
-public class DateUtilsCompat {
+public class DateUtils {
 
 
     // ==================================get 获取方法* ==================================

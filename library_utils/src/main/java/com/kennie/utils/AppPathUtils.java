@@ -1,4 +1,4 @@
-package com.kennie.library.utils;
+package com.kennie.utils;
 
 
 import android.os.Build;
@@ -7,7 +7,7 @@ import android.os.Environment;
 import java.io.File;
 
 /**
- * @项目名 KennieUtils
+ * @项目名 AppPathUtils
  * @类名称 AppPathUtilsCompat
  * @类描述 App路径相关工具类
  * @创建人 Kennie
@@ -34,7 +34,7 @@ import java.io.File;
  * ==================================Other 其它方法* ==================================
  * </p>
  */
-public class AppPathUtilsCompat {
+public class AppPathUtils {
 
     // ==================================App 获取App内置相关方法* ==================================
 

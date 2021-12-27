@@ -1,17 +1,17 @@
-package com.kennie.library.utils.entity;
+package com.kennie.utils.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
  * @项目名 KennieUtils
- * @类名称 FileEntity
+ * @类名称 FileModel
  * @类描述
  * @创建人 Kennie
  * @修改人
  * @创建时间 2021/12/12 22:52
  */
-public class FileEntity implements Parcelable {
+public class FileModel implements Parcelable {
 
     private String name;
     private long length;
@@ -19,7 +19,7 @@ public class FileEntity implements Parcelable {
     private String lastModified;//上一次修改日期
     private boolean isDirectory;//是否是文件
 
-    public FileEntity(String name, long length, String path, String lastModified, boolean isDirectory) {
+    public FileModel(String name, long length, String path, String lastModified, boolean isDirectory) {
         this.name = name;
         this.length = length;
         this.path = path;
@@ -69,7 +69,7 @@ public class FileEntity implements Parcelable {
 
     @Override
     public String toString() {
-        return "FileEntity{" +
+        return "FileModel{" +
                 "name='" + name + '\'' +
                 ", length=" + length +
                 ", path='" + path + '\'' +
@@ -100,7 +100,7 @@ public class FileEntity implements Parcelable {
         this.isDirectory = source.readByte() != 0;
     }
 
-    protected FileEntity(Parcel in) {
+    protected FileModel(Parcel in) {
         this.name = in.readString();
         this.length = in.readLong();
         this.path = in.readString();
@@ -108,15 +108,15 @@ public class FileEntity implements Parcelable {
         this.isDirectory = in.readByte() != 0;
     }
 
-    public static final Parcelable.Creator<FileEntity> CREATOR = new Parcelable.Creator<FileEntity>() {
+    public static final Creator<FileModel> CREATOR = new Creator<FileModel>() {
         @Override
-        public FileEntity createFromParcel(Parcel source) {
-            return new FileEntity(source);
+        public FileModel createFromParcel(Parcel source) {
+            return new FileModel(source);
         }
 
         @Override
-        public FileEntity[] newArray(int size) {
-            return new FileEntity[size];
+        public FileModel[] newArray(int size) {
+            return new FileModel[size];
         }
     };
 }

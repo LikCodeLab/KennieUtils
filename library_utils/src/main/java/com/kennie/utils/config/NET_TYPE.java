@@ -1,4 +1,4 @@
-package com.kennie.library.utils.entity;
+package com.kennie.utils.config;
 
 /**
  * @项目名 KennieUtils
