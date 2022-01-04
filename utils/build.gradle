@@ -9,17 +9,15 @@ apply from: "${rootDir}/configs/tools/publish/publish.gradle"
 android {
 
     defaultConfig {
-        versionCode 5
-        versionName "0.0.5"
-
+        versionCode 6
+        versionName "0.0.6"
     }
 
 }
 
 dependencies {
-    implementation depK.core
-    implementation depX.appcompat
-    implementation depX.material
     // 腾讯 MMKV：https://github.com/Tencent/MMKV
-    implementation 'com.tencent:mmkv-static:1.2.11'
+    api 'com.tencent:mmkv-static:1.2.11'
+    // https://github.com/KeepSafe/ReLinker
+    // api 'com.getkeepsafe.relinker:relinker:1.4.4'
 }
