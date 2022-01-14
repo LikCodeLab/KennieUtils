@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.kennie.utils.NetworkUtil;
+import com.kennie.utils.ScreenUtils;
 import com.kennie.utils.UtilCompatKt;
 import com.kennie.utils.config.UtilInit;
 
@@ -27,6 +28,10 @@ public class ExampleActivity extends AppCompatActivity {
         //************************ NetworkUtil ***************************
         Log.i(TAG, "获取网络是否开启 : " + NetworkUtil.isConnected(this));
         NetworkUtil.printNetworkInfo(this);
+
+
+        //************************ ScreenUtils ***************************
+        initScreenUtils();
 
 
         // AppPathUtilsCompat
@@ -73,14 +78,7 @@ public class ExampleActivity extends AppCompatActivity {
 //        String targetPath = AppPathUtilsCompat.getExternalStoragePath() + File.separator + "app_clerk-debug.apk";
 //        Log.i(TAG, "判断重命名文件名称是否成功：" + FileUtilsCompat.rename(sourcePath, targetPath));
 //
-//        // ScreenUtilsCompat
-//        Log.i(TAG, "获取状态栏高度：" + PhoneScreenUtilsCompat.getStatusBarHeight());
-//        Log.i(TAG, "获取ActionBar高度：" + PhoneScreenUtilsCompat.getActionBarHeight());
-//        Log.i(TAG, "获取导航栏高度：" + PhoneScreenUtilsCompat.getNavigationBarHeight());
-//        Log.i(TAG, "获取屏幕宽度：" + PhoneScreenUtilsCompat.getScreenWidth());
-//        Log.i(TAG, "获取屏幕高度：" + PhoneScreenUtilsCompat.getScreenHeight());
-//        Log.i(TAG, "dp转换为px：" + PhoneScreenUtilsCompat.dp2px(48));
-//        Log.i(TAG, "sp转换为px：" + PhoneScreenUtilsCompat.sp2px(48));
+
 //
 //
 //        // StringUtilsCompat
@@ -106,5 +104,27 @@ public class ExampleActivity extends AppCompatActivity {
 //
 //            }
 //        }, 2000);
+    }
+
+    private void initScreenUtils() {
+
+        Log.i(TAG, "获取屏幕宽度 : " + ScreenUtils.getScreenWidth());
+        Log.i(TAG, "获取屏幕宽度1：" + ScreenUtils.getScreenWidth1());
+        Log.i(TAG, "获取屏幕高度 : " + ScreenUtils.getScreenHeight());
+        Log.i(TAG, "获取屏幕高度1：" + ScreenUtils.getScreenHeight1());
+        Log.i(TAG, "获取屏幕密度：" + ScreenUtils.getScreenDensity());
+
+        Log.i(TAG, "获取状态栏高度：" + ScreenUtils.getStatusBarHeight());
+        Log.i(TAG, "获取ActionBar高度：" + ScreenUtils.getActionBarHeight());
+
+        Log.i(TAG, "获取导航栏高度：" + ScreenUtils.getNavigationBarHeight());
+        Log.i(TAG, "获取导航栏高度1 : " + ScreenUtils.getNavigationBarHeight1());
+
+
+        Log.i(TAG, "获取屏幕原始尺寸高度(包括虚拟功能键高度) : " + ScreenUtils.getDpi());
+        Log.i(TAG, "判断设备是否有虚拟键 : " + ScreenUtils.isVirtualKey());
+
+        Log.i(TAG, "dp转换为px：" + ScreenUtils.dp2px(48));
+        Log.i(TAG, "sp转换为px：" + ScreenUtils.sp2px(48));
     }
 }
