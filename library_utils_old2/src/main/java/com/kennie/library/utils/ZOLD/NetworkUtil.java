@@ -18,57 +18,6 @@ import java.lang.reflect.Method;
  */
 public class NetworkUtil {
 
-    public enum NetType {
-        None(1),
-        Mobile(2),
-        Wifi(4),
-        Other(8);
-
-        NetType(int value) {
-            this.value = value;
-        }
-
-        public int value;
-    }
-
-    public enum NetWorkType {
-        UnKnown(-1),
-        Wifi(1),
-        Net2G(2),
-        Net3G(3),
-        Net4G(4);
-
-        NetWorkType(int value) {
-            this.value = value;
-        }
-
-        public int value;
-    }
-
-    /**
-     * 获取ConnectivityManager
-     */
-    public static ConnectivityManager getConnectivityManager(Context context) {
-        return (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-    }
-
-    /**
-     * 获取ConnectivityManager
-     */
-    public static TelephonyManager getTelephonyManager(Context context) {
-        return (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-    }
-
-    /**
-     * 判断网络连接是否有效（此时可传输数据）。
-     *
-     * @return boolean 不管wifi，还是mobile net，只有当前在连接状态（可有效传输数据）才返回true,反之false。
-     */
-    public static boolean isConnected(Context context) {
-        NetworkInfo net = getConnectivityManager(context).getActiveNetworkInfo();
-        return net != null && net.isConnected();
-    }
-
     /**
      * 判断有无网络正在连接中（查找网络、校验、获取IP等）。
      *

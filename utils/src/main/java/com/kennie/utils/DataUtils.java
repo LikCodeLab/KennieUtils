@@ -7,26 +7,21 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
- * @项目名 KennieUtils
- * @类名称 PhoneDeviceCompat
- * @类描述 字符串处理类
- * @创建人 Kennie
- * @修改人
- * @创建时间 2021/12/13 0:03
+ * Author：Kennie
+ * Project：KennieUtils
+ * Class：StringUtils
+ * Date：2021/12/12 23:15
+ * Desc：数据处理类
  *
  * <p>
  * --*********                                      {@link #}
  * </p>
  */
-public class StringUtils {
-
-
-    // ==================================get 获取方法* ==================================
-
-
-    // ==================================format 格式化方法* ==================================
+public class DataUtils {
 
     /**
      * 格式化字符串（将指定字符串的某些字符替换成* 例如130****6368）
@@ -52,6 +47,23 @@ public class StringUtils {
     }
 
     /**
+     * 将手机号中间4位换成****
+     *
+     * @param phone 手机号
+     * @return 替换后的手机号
+     */
+    public static String formatPhoneNumber(String phone) {
+        if (phone == null) return "";
+        try {
+            StringBuilder sb = new StringBuilder(phone.trim());
+            return sb.replace(3, 7, "****").toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return phone;
+        }
+    }
+
+    /**
      * 格式化时长(格式00:00:00)
      *
      * @param duration 时长，单位：秒
@@ -72,8 +84,14 @@ public class StringUtils {
         return String.format(Locale.ENGLISH, format, duration / 3600, duration % 3600 / 60, duration % 60);
     }
 
-    // ==================================other 其它方法* ==================================
-
+    /***
+     * 格式化银行卡号
+     * @param input : 银行卡号,例如"6225880137706868"
+     * @return
+     */
+    public static String formatBankCardNo(String input) {
+        return input.replaceAll("([\\d]{4})(?=\\d)", "$1 ");
+    }
 
     /**
      * 将字母和数字拆分出来
@@ -135,8 +153,8 @@ public class StringUtils {
             for (int j = 0; j < len1; j++) {
                 String cell1 = cellList1.get(j);
                 String cell2 = cellList2.get(j);
-                Integer cell1Int = toInt(cell1);
-                Integer cell2Int = toInt(cell2);
+                Integer cell1Int = Integer.parseInt(cell1);
+                Integer cell2Int = Integer.parseInt(cell2);
                 int result;
                 if (cell1Int != null && cell2Int != null) {
                     result = cell1Int.compareTo(cell2Int);
@@ -151,11 +169,25 @@ public class StringUtils {
         return 0;
     }
 
-    public static Integer toInt(String s) {
-        try {
-            return Integer.parseInt(s);
-        } catch (Exception e) {
-            return null;
+    /**
+     * 从字符串提取手机号码
+     *
+     * @param sParam 目标字符串
+     * @return 手机号
+     */
+    public static String getPhoneFromStr(String sParam) {
+        if (TextUtils.isEmpty(sParam)) return "";
+        Pattern pattern = Pattern.compile("(1|861)(3|5|7|8)\\d{9}$*");
+        Matcher matcher = pattern.matcher(sParam);
+        StringBuilder bf = new StringBuilder();
+        while (matcher.find()) {
+            bf.append(matcher.group()).append(",");
         }
+        int len = bf.length();
+        if (len > 0) {
+            bf.deleteCharAt(len - 1);
+        }
+        return bf.toString();
     }
+
 }

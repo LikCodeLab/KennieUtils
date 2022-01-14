@@ -2,8 +2,9 @@ package com.kennie.example.utils;
 
 import android.app.Application;
 
-import com.kennie.library.utils.KennieUtilInit;
-import com.kennie.library.utils.ZOLD.MMKVConfig;
+import com.kennie.utils.MMKVUtils;
+import com.kennie.utils.config.UtilInit;
+
 
 /**
  * @项目名 KennieUtils
@@ -18,8 +19,9 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        KennieUtilInit.init(this);
-        MMKVConfig.init(this);
+        UtilInit.init(this);
+//        MMKVConfig.init(this);
+        MMKVUtils.get().init(this);
     }
 
 }
