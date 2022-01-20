@@ -45,21 +45,6 @@ public class ExampleActivity extends AppCompatActivity {
 //        Log.i(TAG, "获取外存储公共目录路径(不同类别)：" + AppPathUtilsCompat.getExternalStoragePublicPath(Environment.DIRECTORY_DCIM));
 //
 //
-//        // AppUtilsCompat
-//        Log.i(TAG, "APP名称：" + AppUtilsCompat.getAppName());
-//        Log.i(TAG, "App包名：" + AppUtilsCompat.getAppPackage());
-//        Log.i(TAG, "App版本名称 ：" + AppUtilsCompat.getAppVersionName());
-//        Log.i(TAG, "App版本号 ：" + AppUtilsCompat.getAppVersionCode());
-//        Log.i(TAG, "App图标 ：" + AppUtilsCompat.getAppIcon());
-//        Log.i(TAG, "App安装原始路径：" + AppUtilsCompat.getAppInstallPath());
-//        Log.i(TAG, "App原始安装文件(APK)：" + AppUtilsCompat.getAppSourceFile().getAbsolutePath());
-//        Log.i(TAG, "APP是否安装：" + AppUtilsCompat.isAppInstalled());
-//        Log.i(TAG, "APP是否安装：" + AppUtilsCompat.isAppInstalled("com.jskjjx.cloudmeeting"));
-//        Log.i(TAG, "APP是否为Debug模式 ：" + AppUtilsCompat.isAppDebugMode());
-//        Log.i(TAG, "App是否处于前台 ：" + AppUtilsCompat.isAppForeground());
-//        // Log.i(TAG, "安装APP（兼容Android7.0及以上版本） ：");
-//        // AppUtilsCompat.installApk(new File(""), "");
-//
 //        // DateUtilsCompat
 //        Log.i(TAG, "当前时间戳：" + DateUtilsCompat.getCurrentTimeMillis());
 //        Log.i(TAG, "当前缺省格式日期与时间：" + DateUtilsCompat.getCurrentDate());
